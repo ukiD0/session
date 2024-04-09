@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.LogInFragment"
+    android:theme="@style/Base.Theme.Session2">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:paddingBottom="30dp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="200dp"
+            android:layout_height="30dp"
+            android:text="Welcome Back"
+            android:layout_marginTop="90dp"
+            style="@style/h1" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="275dp"
+            android:layout_height="20dp"
+            android:text="Fill in your email and password to continue"
+            android:layout_marginTop="8dp"
+            style="@style/h2"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Email Address"
+            android:layout_marginTop="24dp"
+            android:inputType="text"
+            style="@style/h2"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/text_email"
+            android:layout_width="342dp"
+            android:layout_height="44dp"
+            android:background="@drawable/input_gary"
+            android:layout_marginTop="8dp"
+            android:hint="***********@mail.com"
+            android:inputType="textEmailAddress"
+            style="@style/input_text"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Password"
+            android:layout_marginTop="24dp"
+            android:inputType="text"
+            style="@style/h2"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/text_pass"
+            android:layout_width="342dp"
+            android:layout_height="44dp"
+            android:background="@drawable/input_gary"
+            android:layout_marginTop="8dp"
+            android:hint="**********"
+            android:inputType="textPassword"
+            android:drawableEnd="@drawable/ic_eye"
+            style="@style/input_text"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="37dp">
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    style="@style/h2"
+                    android:button="@null"
+                    android:background="@drawable/checkbox_blue"
+                    />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:text="Remember password"
+                    android:paddingLeft="5dp"
+                    style="@style/h2"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/text_forgot"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Forgot"
+                android:textColorLink="@color/light_pr_blue"
+                android:layout_marginLeft="70dp"
+                android:paddingLeft="5dp"
+                style="@style/h2"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_LogIN"
+            android:layout_width="342dp"
+            android:layout_height="46dp"
+            android:background="@drawable/btn_selector"
+            android:enabled="false"
+            android:layout_gravity="center"
+            android:text="Log In"
+            android:layout_marginTop="64dp"
+            style="@style/btn"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_SignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/SignUn"
+            style="@style/h2"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:textColorLink="@color/light_pr_blue"
+            />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="or log in using"
+            android:layout_marginTop="18dp"
+            style="@style/h2"
+            android:layout_gravity="center"
+            />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/google"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_google"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</ScrollView>
