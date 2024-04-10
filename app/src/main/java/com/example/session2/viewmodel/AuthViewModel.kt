@@ -22,14 +22,14 @@ class AuthViewModel: ViewModel() {
     val user: LiveData<UserInfo> =_user
 
     suspend fun auth(out_email:String,out_pass:String){
-        DbCon.supabase.auth.signInWith(Email){
+        DbCon.supabase.auth.signUpWith(Email){
             email = out_email
             password = out_pass
         }
     }
 
     suspend fun registration(out_email: String,out_pass: String){
-        DbCon.supabase.auth.signUpWith(Email){
+        DbCon.supabase.auth.signInWith(Email){
             email = out_email
             password = out_pass
         }
@@ -48,10 +48,11 @@ class AuthViewModel: ViewModel() {
 //            }
         }
     }
-    suspend fun changePas(out_pass: String){
-         DbCon.supabase.auth.modifyUser {
-            password = out_pass
-        }
+    suspend fun resetPass(out_email: String){
+         DbCon.supabase.auth.resetPasswordForEmail(out_email)
+    }
+    fun modif(out_pass: String){
+        out_pass
     }
     suspend fun verifOTP(out_email: String){
         DbCon.supabase.auth.signInWith(OTP){

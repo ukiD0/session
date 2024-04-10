@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
-        android:paddingBottom="30dp"
+        android:paddingBottom="40dp"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -117,10 +117,10 @@
             style="@style/h2"
             android:layout_gravity="center"
             />
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/google"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:background="@drawable/icon_google"
             android:layout_gravity="center"
             android:layout_marginTop="8dp"/>
