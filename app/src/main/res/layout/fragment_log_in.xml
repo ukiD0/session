@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,11 +35,12 @@
             style="@style/h2"/>
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/text_email"
-            android:layout_width="342dp"
+            android:layout_width="match_parent"
             android:layout_height="44dp"
             android:background="@drawable/input_gary"
             android:layout_marginTop="8dp"
             android:hint="***********@mail.com"
+            android:text="valusakorovkina@gmail.com"
             android:inputType="textEmailAddress"
             style="@style/input_text"/>
         <androidx.appcompat.widget.AppCompatTextView
@@ -51,11 +52,12 @@
             style="@style/h2"/>
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/text_pass"
-            android:layout_width="342dp"
+            android:layout_width="match_parent"
             android:layout_height="44dp"
             android:background="@drawable/input_gary"
             android:layout_marginTop="8dp"
             android:hint="**********"
+            android:text="1234567890"
             android:inputType="textPassword"
             android:drawableEnd="@drawable/ic_eye"
             style="@style/input_text"/>
@@ -83,18 +85,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/Forgot"
-                android:textColorLink="@color/light_pr_blue"
-                android:layout_marginLeft="70dp"
-                android:paddingLeft="5dp"
+                android:textColorLink="@color/primary_blue"
+                android:layout_weight="1"
+                android:textAlignment="textEnd"
                 style="@style/h2"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_LogIN"
             android:layout_width="342dp"
             android:layout_height="46dp"
             android:background="@drawable/btn_selector"
             android:enabled="false"
+            android:textAlignment="center"
             android:layout_gravity="center"
             android:text="Log In"
             android:layout_marginTop="64dp"
@@ -107,7 +114,7 @@
             style="@style/h2"
             android:layout_marginTop="20dp"
             android:layout_gravity="center"
-            android:textColorLink="@color/light_pr_blue"
+            android:textColorLink="@color/primary_blue"
             />
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
@@ -127,4 +134,4 @@
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-</ScrollView>
+</LinearLayout>

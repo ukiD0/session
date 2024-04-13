@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary_blue">#001B3B</color>
+    <color name="backg_menu">#001B3B</color>
+    <color name="selector_menu">#FFFFFFFF</color>
+    <color name="card_selector">#001B3B</color>
+    <color name="text_black_selector">#FFFFFFFF</color>
+    <color name="backg_color_card">#001B3B</color>
+</resources>

@@ -15,38 +15,44 @@ import io.github.jan.supabase.gotrue.providers.builtin.Email
 import io.github.jan.supabase.gotrue.providers.builtin.IDToken
 import io.github.jan.supabase.gotrue.providers.builtin.OTP
 import io.github.jan.supabase.gotrue.user.UserInfo
+import kotlinx.serialization.json.buildJsonObject
+import kotlinx.serialization.json.put
 
 class AuthViewModel: ViewModel() {
 
     private var _user: MutableLiveData<UserInfo> = MutableLiveData()
     val user: LiveData<UserInfo> =_user
 
-    suspend fun auth(out_email:String,out_pass:String){
+    suspend fun auth(out_email:String,out_pass:String): UserInfo? {
         DbCon.supabase.auth.signUpWith(Email){
             email = out_email
             password = out_pass
+            data = buildJsonObject {
+                put("phone",_user.value?.phone)
+            }
         }
+        return DbCon.supabase.auth.currentUserOrNull()
     }
 
-    suspend fun registration(out_email: String,out_pass: String){
+    suspend fun registration(out_email: String,out_pass: String): UserInfo? {
         DbCon.supabase.auth.signInWith(Email){
             email = out_email
             password = out_pass
         }
+        return DbCon.supabase.auth.currentUserOrNull()
     }
-    fun getUser(){
-        _user.value = DbCon.supabase.auth.currentUserOrNull()
-    }
-    suspend fun google(){
+    suspend fun google(): UserInfo? {
         DbCon.supabase.auth.signInWith(IDToken) {
             idToken = "token"
             provider = Google
-            //optional:
-//            nonce = "nonce"
 //            data = buildJsonObject {
 //                //...
 //            }
         }
+        return DbCon.supabase.auth.currentUserOrNull()
+    }
+    suspend fun logotttt(){
+        DbCon.supabase.auth.signOut()
     }
     suspend fun resetPass(out_email: String){
          DbCon.supabase.auth.resetPasswordForEmail(out_email)

@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.cardview.widget.CardView
+import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -19,6 +21,8 @@ import com.example.session2.common.DbCon
 import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentLogInBinding
 import com.example.session2.viewmodel.AuthViewModel
+import com.example.session2.viewmodel.StateViewModel
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.github.jan.supabase.gotrue.SessionStatus
 import io.github.jan.supabase.gotrue.auth
 import kotlinx.coroutines.launch
@@ -28,6 +32,8 @@ class LogInFragment : Fragment() {
 
     private lateinit var binding: FragmentLogInBinding
     private lateinit var authmodel: AuthViewModel
+    private lateinit var stateViewModel: StateViewModel
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,6 +41,10 @@ class LogInFragment : Fragment() {
     ): View? {
         binding = FragmentLogInBinding.inflate(inflater,container,false)
         authmodel = ViewModelProvider(requireActivity())[AuthViewModel::class.java]
+        stateViewModel = ViewModelProvider(requireActivity())[StateViewModel::class.java]
+
+        stateViewModel.setVisible(false)
+        stateViewModel.setBottomVisible(false)
 
         binding.google.setOnClickListener {
             try {
@@ -66,36 +76,20 @@ class LogInFragment : Fragment() {
         binding.btnLogIN.setOnClickListener {
             try {
                 lifecycleScope.launch {
-                    authmodel.registration(
+                    val res = authmodel.registration(
                         binding.textEmail.text.toString() ,
                         binding.textPass.text.toString()
                     )
-                    sesstat()
+                    if (res != null){
+                        Navigation.findNavController(binding.root).navigate(R.id.action_logInFragment_to_homeFragment)
+                    }
                 }
             }catch (e:Exception){
                 Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
             }
-//            Navigation.findNavController(binding.root).navigate(R.id.action_logInFragment_to_homeFragment)
         }
 
 
         return binding.root
     }
-
-    private suspend fun sesstat(){
-
-        DbCon.supabase.auth.sessionStatus.collect {
-            try {
-                when(it) {
-                    is SessionStatus.Authenticated -> Navigation.findNavController(binding.root).navigate(R.id.action_logInFragment_to_homeFragment)
-                    SessionStatus.LoadingFromStorage -> TODO()
-                    SessionStatus.NetworkError -> TODO()
-                    SessionStatus.NotAuthenticated -> TODO()
-                }
-            }catch (e:Exception){
-                Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
-            }
-
-        }
-}
 }

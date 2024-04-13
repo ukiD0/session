@@ -26,7 +26,7 @@ class SignUpFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSignUpBinding.inflate(inflater,container,false)
         authmodel = ViewModelProvider(requireActivity())[AuthViewModel::class.java]
 
@@ -34,18 +34,18 @@ class SignUpFragment : Fragment() {
             Navigation.findNavController(binding.root).navigate(R.id.action_signUpFragment_to_logInFragment)
         }
         binding.google.setOnClickListener {
-            try {
-                lifecycleScope.launch {
-                    authmodel.google()
-                }
-            }catch (e:Exception){
-                Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
-            }
-
+//            try {
+//                lifecycleScope.launch {
+//                    authmodel.google()
+//                }
+//            }catch (e:Exception){
+//                Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
+//            }
+            Navigation.findNavController(binding.root).navigate(R.id.action_signUpFragment_to_homeFragment)
         }
 
         binding.checkb.setOnClickListener {
-                binding.btnSignUp.isEnabled = true
+            binding.btnSignUp.isEnabled = binding.checkb.isChecked
         }
 
         binding.btnSignUp.setOnClickListener {
@@ -54,41 +54,33 @@ class SignUpFragment : Fragment() {
                 && binding.email.text.toString().length > 2
                 && binding.email.text.toString().contains("@")
                 && binding.email.text.toString().contains(".")
-                && binding.pass.text.toString().equals(binding.pass2.text.toString())
-                && binding.pass2.text.toString().length > 6
+                && binding.pass.editText!!.text.toString().equals(binding.pass2.editText!!.text.toString())
+                && binding.pass2.editText!!.text.toString() .length > 6
                 && binding.checkb.isChecked){
                 try {
                     lifecycleScope.launch{
-                        authmodel.auth(binding.email.text.toString(),binding.pass2.text.toString())
-                        DbCon.supabase.
+                        authmodel.auth(binding.email.text.toString(),binding.pass2.editText!!.text.toString())
+                        try {
+                            val user = DbCon.supabase.auth.currentUserOrNull()
+                            if (user != null) {
+                                Navigation.findNavController(binding.root)
+                                    .navigate(R.id.action_signUpFragment_to_homeFragment)
+                            }
+                        }catch (e:Exception){
+                            Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
+                        }
                     }
-
                 }catch (e:Exception){
                     Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
                 }
             }else{
-                Helper.alert(requireActivity(),resources.getString(R.string.error),resources.getString(R.string.error_email_mes))
+                Helper.alert(requireContext(),resources.getString(R.string.error),resources.getString(R.string.error_email_mes))
             }
         }
+
 
         return binding.root
     }
 
-//    private suspend fun sesstat(){
-//
-//        DbCon.supabase.auth.sessionStatus.collect {
-//            try {
-//                when(it) {
-//                    is SessionStatus.Authenticated -> Navigation.findNavController(binding.root).navigate(R.id.action_signUpFragment_to_homeFragment)
-//                    SessionStatus.LoadingFromStorage -> TODO()
-//                    SessionStatus.NetworkError -> TODO()
-//                    SessionStatus.NotAuthenticated -> TODO()
-//                }
-//            }catch (e:Exception){
-//                Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
-//            }
-//
-//        }
-//    }
 
 }

@@ -10,5 +10,5 @@
     <string name="Code">If you didn’t receive code, <a href="">resend</a></string>
     <string name="error">Ошибка</string>
     <string name="error_email_mes">Поле заполнено неверно</string>
-
+    <string name="money"><a href="">money</a></string>
 </resources>
