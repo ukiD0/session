@@ -6,4 +6,7 @@
     <color name="card_selector">#001B3B</color>
     <color name="text_black_selector">#FFFFFFFF</color>
     <color name="backg_color_card">#001B3B</color>
+    <color name="special_tint">#FFFFFFFF</color>
+    <color name="card_text">#A7A7A7</color>
+
 </resources>

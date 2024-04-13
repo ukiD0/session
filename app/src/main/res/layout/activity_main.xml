@@ -12,7 +12,8 @@
         android:id="@+id/cwindowCard"
         android:layout_width="match_parent"
         android:layout_height="65dp"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:backgroundTint="@color/backg_color_card">
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -35,7 +36,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:visibility="visible"
+        android:visibility="gone"
         android:id="@+id/bottomnav"
         app:menu="@menu/main_menu"
         android:background="@color/backg_menu"

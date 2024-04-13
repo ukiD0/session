@@ -13,6 +13,9 @@
     <color name="card_selector">#FFFFFFFF</color>
     <color name="text_black_selector">#3A3A3A</color>
     <color name="backg_color_card">#FFFFFFFF</color>
+    <color name="special_tint">#3A3A3A</color>
+    <color name="back_black">#000D1D</color>
+    <color name="card_text">#A7A7A7</color>
 
     <color name="text_black">#141414</color>
     <color name="text_asblack">#3A3A3A</color>

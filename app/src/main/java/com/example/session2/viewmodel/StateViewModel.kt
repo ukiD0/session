@@ -1,5 +1,6 @@
 package com.example.session2.viewmodel
 
+import android.graphics.Color
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -17,6 +18,7 @@ class StateViewModel : ViewModel() {
         _nameCards.value = "Main"
         _cardVisible.value = false
         _bottomMentuVisible.value = false
+
     }
 
     fun setVisible(yesno:Boolean){
