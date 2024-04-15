@@ -18,6 +18,7 @@ import com.example.session2.R
 import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentNewPasswordBinding
 import com.example.session2.viewmodel.AuthViewModel
+import io.github.jan.supabase.gotrue.user.UserInfo
 import kotlinx.coroutines.launch
 
 
@@ -34,11 +35,15 @@ class NewPasswordFragment : Fragment() {
         authViewModel = ViewModelProvider(requireActivity())[AuthViewModel::class.java]
 
         binding.btnLogIn.setOnClickListener {
+            var modifUser: UserInfo? = null
             try {
                 lifecycleScope.launch {
-                    authViewModel.modifUser(binding.textPass2.editText?.text.toString())
+                  modifUser =  authViewModel.modifUser(binding.textPass2.editText?.text.toString())
+                }.invokeOnCompletion {
+                    if (modifUser != null){
+                        Navigation.findNavController(binding.root).navigate(R.id.action_newPasswordFragment_to_homeFragment)
+                    }
                 }
-                Navigation.findNavController(binding.root).navigate(R.id.action_newPasswordFragment_to_homeFragment)
             }catch (e:Exception){
                 Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
             }

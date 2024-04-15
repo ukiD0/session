@@ -58,10 +58,11 @@ class AuthViewModel() : ViewModel()  {
     suspend fun logotttt(){
         DbCon.supabase.auth.signOut()
     }
-    suspend fun modifUser(out_pass: String){
+    suspend fun modifUser(out_pass: String): UserInfo? {
          DbCon.supabase.auth.modifyUser{
              password = out_pass
          }
+        return DbCon.supabase.auth.currentUserOrNull()
     }
     suspend fun verifOTP(out_email: String){
         _currentEmail.value = out_email
@@ -73,10 +74,7 @@ class AuthViewModel() : ViewModel()  {
         DbCon.supabase.auth.verifyEmailOtp(OtpType.Email.EMAIL,out_email,out_token)
         return DbCon.supabase.auth.currentUserOrNull()
     }
-//    suspend fun sendDatatoProfile(out_id:String, out_phone: String,fullname_out: String) {
-//        val data = Profiles(phone = out_phone, fullname = fullname_out,)
-//        DbCon.supabase.from("Profiles").insert(data)
-//    }
+
     suspend fun selectData(out_phone: String,profiles: Profiles){
         val response = DbCon.supabase.from("Profiles").update({
             Profiles::phone setTo out_phone

@@ -6,6 +6,7 @@
 package com.example.session2.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -106,13 +107,17 @@ class OTPVerFragment : Fragment() {
             try {
                 var chekOTP: UserInfo? = null
                 lifecycleScope.launch {
-                     chekOTP = authViewModel.checkOTP(email.toString(),
-                        binding.oOne.text.toString()
-                                +binding.oTwo.text.toString()
-                                +binding.oThree.text.toString()
-                                +binding.oFour.text.toString()
-                                +binding.oFive.text.toString()
-                                +binding.oSix.text.toString())
+                    try {
+                        chekOTP = authViewModel.checkOTP(email.toString(),
+                            binding.oOne.text.toString()
+                                    +binding.oTwo.text.toString()
+                                    +binding.oThree.text.toString()
+                                    +binding.oFour.text.toString()
+                                    +binding.oFive.text.toString()
+                                    +binding.oSix.text.toString())
+                    }catch (e:Exception){
+                        Log.e("test",e.cause.toString())
+                    }
                 }.invokeOnCompletion {
                     if (chekOTP != null){
                         Navigation.findNavController(binding.root).navigate(R.id.action_OTPVerFragment_to_newPasswordFragment)
