@@ -7,22 +7,28 @@ package com.example.session2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.session2.viewmodel.ProfileViewModel
 import com.example.session2.viewmodel.StateViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
     private lateinit var stateViewModel: StateViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         stateViewModel = ViewModelProvider(this)[StateViewModel::class.java]
+
 
         val bottomNav =findViewById<BottomNavigationView>(R.id.bottomnav)
         val nameCards = findViewById<TextView>(R.id.name_window)
