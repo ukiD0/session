@@ -55,6 +55,9 @@ class LogInFragment : Fragment() {
                 Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
             }
         }
+        binding.textSignUp.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_logInFragment_to_signUpFragment)
+        }
 
         binding.textForgot.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_logInFragment_to_forgotPasswordFragment)

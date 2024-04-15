@@ -36,6 +36,7 @@ class SignUpFragment : Fragment() {
         statemodel = ViewModelProvider(requireActivity())[StateViewModel::class.java]
 
         statemodel.setVisible(false)
+        statemodel.setBottomVisible(false)
 
         binding.textSignIn.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_signUpFragment_to_logInFragment)

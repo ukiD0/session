@@ -26,8 +26,11 @@ class AuthViewModel() : ViewModel()  {
 
     private var _user: MutableLiveData<UserInfo> = MutableLiveData()
     private var _currentEmail: MutableLiveData<String> = MutableLiveData()
+    private var _currentPhone: MutableLiveData<String> = MutableLiveData()
+
     val user: LiveData<UserInfo> =_user
     val currentEmail: LiveData<String> = _currentEmail
+    var currentPhone: LiveData<String> = _currentPhone
 
 
     suspend fun auth(out_email:String,out_pass:String): UserInfo? {
@@ -74,8 +77,15 @@ class AuthViewModel() : ViewModel()  {
         DbCon.supabase.auth.verifyEmailOtp(OtpType.Email.EMAIL,out_email,out_token)
         return DbCon.supabase.auth.currentUserOrNull()
     }
+     suspend fun editProfile(out_phone: String): UserInfo? {
+         _currentPhone.value = out_phone
+         DbCon.supabase.auth.modifyUser {
+            phone = out_phone
+         }
+         return DbCon.supabase.auth.currentUserOrNull()
+     }
 
-    suspend fun selectData(out_phone: String,profiles: Profiles){
+    suspend fun updateData(out_phone: String,profiles: Profiles){
         val response = DbCon.supabase.from("Profiles").update({
             Profiles::phone setTo out_phone
         }

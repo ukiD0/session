@@ -103,6 +103,10 @@ class OTPVerFragment : Fragment() {
             }
         }
 
+        binding.textSignUp.setOnClickListener {
+
+        }
+
         binding.sendOTP.setOnClickListener {
             try {
                 var chekOTP: UserInfo? = null

@@ -79,6 +79,9 @@
         <action
             android:id="@+id/action_profileFragment_to_logInFragment"
             app:destination="@id/logInFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_editInformationFragment"
+            app:destination="@id/editInformationFragment" />
     </fragment>
     <fragment
         android:id="@+id/trackFragment"
@@ -98,5 +101,14 @@
         <action
             android:id="@+id/action_pdfViewFragment_to_signUpFragment"
             app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editInformationFragment"
+        android:name="com.example.session2.view.EditInformationFragment"
+        android:label="fragment_edit_information"
+        tools:layout="@layout/fragment_edit_information" >
+        <action
+            android:id="@+id/action_editInformationFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

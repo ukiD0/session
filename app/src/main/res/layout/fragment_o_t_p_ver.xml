@@ -101,6 +101,7 @@
             android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:textColorLink="@color/primary_blue"
+            android:enabled="false"
             />
 
         <androidx.appcompat.widget.AppCompatButton

@@ -35,9 +35,9 @@ class ProfileFragment : Fragment() {
     private lateinit var stateViewModel: StateViewModel
     private lateinit var profileViewModel: ProfileViewModel
 
-    val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()){
-        binding.photo.setImageURI(it)
-    }
+//    val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()){
+//        binding.photo.setImageURI(it)
+//    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,7 +51,10 @@ class ProfileFragment : Fragment() {
         stateViewModel.setVisible(true)
 
         binding.photo.setOnClickListener {
-            galleryLauncher.launch("image/*")
+//            val chooser = Intent.createChooser(galleryIntent, "Some text here")
+//            chooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(cameraIntent))
+//            startActivityForResult(chooser, requestCode)
+//            galleryLauncher.launch("image/*")
         }
 
         binding.logout.setOnClickListener {
@@ -59,6 +62,10 @@ class ProfileFragment : Fragment() {
                 authModel.logotttt()
             }
             Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment_to_logInFragment)
+        }
+
+        binding.profile.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment_to_editInformationFragment)
         }
 
         binding.swyyytch.setOnClickListener {

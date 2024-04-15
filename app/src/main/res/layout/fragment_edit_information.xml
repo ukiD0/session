@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.EditInformationFragment"
+    android:orientation="vertical"
+    android:layout_margin="24dp"
+    android:paddingBottom="30dp">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:text="Update an account"
+            android:layout_marginTop="50dp"
+            style="@style/h1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="65dp"
+            android:layout_height="20dp"
+            android:text="Full name"
+            android:layout_marginTop="33dp"
+
+            style="@style/h2"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/input_gary"
+            android:layout_marginTop="8dp"
+            android:hint="Ivanov Ivan"
+            style="@style/input_text"/>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Phone Number"
+            android:layout_marginTop="24dp"
+            android:inputType="text"
+            style="@style/h2"/>
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/number"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/input_gary"
+            android:layout_marginTop="8dp"
+            android:hint="+7(999)999-99-99"
+            android:inputType="number"
+            style="@style/input_text"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Password"
+            android:layout_marginTop="24dp"
+            android:inputType="text"
+            style="@style/h2"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:layout_marginTop="8dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/ic_eye_selecttor"
+            app:passwordToggleTint="@color/black"
+            app:hintEnabled="false"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:padding="0dp"
+                android:inputType="textPassword"
+                android:background="@drawable/input_gary"
+                style="@style/input_text"
+                android:hint="**********"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Confirm Password"
+            android:layout_marginTop="24dp"
+            android:inputType="text"
+            style="@style/h2"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/pass2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="0dp"
+            android:layout_marginTop="8dp"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleDrawable="@drawable/ic_eye_selecttor"
+            app:passwordToggleTint="@color/black"
+            android:textColorHint="@null"
+            app:hintEnabled="false"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:padding="0dp"
+                android:inputType="textPassword"
+                android:background="@drawable/input_gary"
+                style="@style/input_text"
+                android:hint="**********"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_signUp"
+            android:layout_width="342dp"
+            android:layout_height="46dp"
+            android:background="@drawable/btn_selector"
+            android:enabled="false"
+            android:text="Save"
+            android:textAlignment="center"
+            android:layout_gravity="center"
+            android:layout_marginTop="64dp"
+            style="@style/btn"/>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
