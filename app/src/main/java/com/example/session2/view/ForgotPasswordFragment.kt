@@ -33,19 +33,22 @@ class ForgotPasswordFragment : Fragment() {
         binding = FragmentForgotPasswordBinding.inflate(inflater,container,false)
         authmodel = ViewModelProvider(requireActivity())[AuthViewModel::class.java]
 
-
+        binding.textEmail.doAfterTextChanged {
+            if (binding.textEmail.text.toString().contains("@")
+                && binding.textEmail.text.toString().length > 6){
+                binding.sendOTP.isEnabled = true
+//            }else{
+//                Helper.alert(requireContext(),resources.getString(R.string.error),resources.getString(R.string.error_email_mes))
+//            }
+        }
+        }
 
         binding.sendOTP.setOnClickListener {
             try {
-                if (binding.textEmail.text.toString().contains("@")
-                    && binding.textEmail.text.toString().length > 6){
                     lifecycleScope.launch {
                         authmodel.verifOTP(binding.textEmail.text.toString())
                     }
-                }else {
-                    Helper.alert(requireContext(),resources.getString(R.string.error),resources.getString(R.string.error_email_mes))
-                }
-            }catch (e:Exception){
+            }catch(e:Exception){
                 Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
             }
             Navigation.findNavController(binding.root).navigate(R.id.action_forgotPasswordFragment_to_OTPVerFragment)

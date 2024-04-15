@@ -87,7 +87,7 @@
             app:passwordToggleEnabled="true"
             app:passwordToggleDrawable="@drawable/ic_eye_selecttor"
             app:passwordToggleTint="@color/black"
-            android:textColorHint="@color/drk_gary"
+            app:hintEnabled="false"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -97,7 +97,6 @@
                 android:background="@drawable/input_gary"
                 style="@style/input_text"
                 android:hint="**********"
-                android:textColorHint="@android:color/transparent"
                 />
         </com.google.android.material.textfield.TextInputLayout>
         <androidx.appcompat.widget.AppCompatTextView
@@ -115,7 +114,8 @@
             app:passwordToggleEnabled="true"
             app:passwordToggleDrawable="@drawable/ic_eye_selecttor"
             app:passwordToggleTint="@color/black"
-            android:textColorHint="@color/drk_gary"
+            android:textColorHint="@null"
+            app:hintEnabled="false"
             >
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -125,7 +125,6 @@
                 android:background="@drawable/input_gary"
                 style="@style/input_text"
                 android:hint="**********"
-                android:textColorHint="@android:color/transparent"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,6 +143,7 @@
                 android:background="@drawable/checkbox_blue"
                 />
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/linkforpdf"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
@@ -190,7 +190,6 @@
             android:layout_gravity="center"
             android:layout_marginTop="8dp"
             />
-
 
     </androidx.appcompat.widget.LinearLayoutCompat>
 </ScrollView>

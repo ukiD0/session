@@ -12,21 +12,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModelProvider
 import com.example.session2.R
 import com.example.session2.databinding.FragmentTrackBinding
+import com.example.session2.viewmodel.StateViewModel
 
 
 class TrackFragment : Fragment() {
     private lateinit var binding: FragmentTrackBinding
+    private lateinit var stateViewModel: StateViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
        binding = FragmentTrackBinding.inflate(inflater,container,false)
+        stateViewModel = ViewModelProvider(requireActivity())[StateViewModel::class.java]
+        stateViewModel.setVisible(false)
 
-        val cards = requireActivity().findViewById<CardView>(R.id.cwindowCard)
-        cards.isVisible = false
 
         return binding.root
     }

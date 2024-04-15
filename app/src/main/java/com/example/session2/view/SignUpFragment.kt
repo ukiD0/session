@@ -1,5 +1,8 @@
 package com.example.session2.view
 
+import android.content.Intent
+import android.graphics.pdf.PdfRenderer
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -14,7 +17,7 @@ import com.example.session2.common.DbCon
 import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentSignUpBinding
 import com.example.session2.viewmodel.AuthViewModel
-import io.github.jan.supabase.gotrue.SessionStatus
+import com.example.session2.viewmodel.StateViewModel
 import io.github.jan.supabase.gotrue.auth
 import kotlinx.coroutines.launch
 
@@ -23,16 +26,25 @@ class SignUpFragment : Fragment() {
 
     private lateinit var binding: FragmentSignUpBinding
     private lateinit var authmodel: AuthViewModel
+    private lateinit var statemodel: StateViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentSignUpBinding.inflate(inflater,container,false)
         authmodel = ViewModelProvider(requireActivity())[AuthViewModel::class.java]
+        statemodel = ViewModelProvider(requireActivity())[StateViewModel::class.java]
+
+        statemodel.setVisible(false)
 
         binding.textSignIn.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_signUpFragment_to_logInFragment)
         }
+
+        binding.linkforpdf.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_signUpFragment_to_pdfViewFragment)
+        }
+
         binding.google.setOnClickListener {
 //            try {
 //                lifecycleScope.launch {

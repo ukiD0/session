@@ -9,21 +9,34 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="23dp"
-        android:paddingBottom="40dp">
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="75dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginRight="19dp"
             android:backgroundTint="@color/card_selector">
-            <androidx.appcompat.widget.AppCompatImageView
+            <androidx.cardview.widget.CardView
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:scaleType="fitXY"
+                android:layout_marginLeft="10dp"
                 android:layout_gravity="center|left"
-                android:src="@drawable/image_boy"
-                android:background="@drawable/image_shape"/>
+                app:cardCornerRadius="60dp"
+                android:background="@drawable/image_shape"
+                >
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/photo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/image_boy"
+                    android:scaleType="centerCrop"
+                    android:scaleX="1"
+                    android:scaleY="1"
+                    />
+            </androidx.cardview.widget.CardView>
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_hello"
                 android:layout_width="wrap_content"
@@ -32,7 +45,7 @@
                 android:text="Hello"
                 android:layout_gravity="left"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="70dp"/>
+                android:layout_marginLeft="80dp"/>
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,14 +53,14 @@
                 android:text="Current balance:"
                 android:layout_gravity="left"
                 android:layout_marginTop="35dp"
-                android:layout_marginLeft="70dp"/>
+                android:layout_marginLeft="80dp"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/money_text"
                 style="@style/MoneyText"
                 android:layout_width="wrap_content"
-                android:layout_height="9dp"
-                android:layout_marginLeft="165dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="175dp"
                 android:layout_marginTop="35dp"
                 android:text="@string/money" />
             <androidx.appcompat.widget.AppCompatImageView
@@ -64,6 +77,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
             android:orientation="horizontal">
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -88,8 +103,10 @@
             android:id="@+id/profile"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:backgroundTint="@color/card_selector"
             >
             <androidx.appcompat.widget.AppCompatImageView
@@ -126,8 +143,10 @@
             android:id="@+id/statement"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:backgroundTint="@color/card_selector"
 
             >
@@ -165,8 +184,10 @@
             android:id="@+id/notification"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:backgroundTint="@color/card_selector"
             >
             <androidx.appcompat.widget.AppCompatImageView
@@ -203,8 +224,10 @@
             android:id="@+id/cardandbank"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:backgroundTint="@color/card_selector"
             >
             <androidx.appcompat.widget.AppCompatImageView
@@ -241,8 +264,10 @@
             android:id="@+id/referrals"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:backgroundTint="@color/card_selector"
             >
             <androidx.appcompat.widget.AppCompatImageView
@@ -279,8 +304,10 @@
             android:id="@+id/aboutus"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:backgroundTint="@color/card_selector"
             >
             <androidx.appcompat.widget.AppCompatImageView
@@ -317,8 +344,11 @@
             android:id="@+id/logout"
             android:layout_width="match_parent"
             android:layout_height="62dp"
-            app:cardElevation="10dp"
+            app:cardElevation="5dp"
             android:layout_marginTop="20dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="40dp"
             android:backgroundTint="@color/card_selector"
             >
             <androidx.appcompat.widget.AppCompatImageView

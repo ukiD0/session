@@ -60,12 +60,12 @@ class LogInFragment : Fragment() {
             Navigation.findNavController(binding.root).navigate(R.id.action_logInFragment_to_forgotPasswordFragment)
         }
 
-        binding.textPass.doAfterTextChanged {
+        binding.textPass.editText?.doAfterTextChanged {
             try {
                 if (binding.textEmail.text.toString().length > 5
                     && binding.textEmail.text.toString().contains("@")
                     && binding.textEmail.text.toString().contains(".")
-                    && binding.textPass.text.toString().length > 6){
+                    && binding.textPass.editText!!.text.toString().length > 6){
                     binding.btnLogIN.isEnabled = true
                 }
             }catch (e:Exception){
@@ -78,7 +78,7 @@ class LogInFragment : Fragment() {
                 lifecycleScope.launch {
                     val res = authmodel.registration(
                         binding.textEmail.text.toString() ,
-                        binding.textPass.text.toString()
+                        binding.textPass.editText!!.text.toString()
                     )
                     if (res != null){
                         Navigation.findNavController(binding.root).navigate(R.id.action_logInFragment_to_homeFragment)

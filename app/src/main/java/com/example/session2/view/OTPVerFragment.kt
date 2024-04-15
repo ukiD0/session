@@ -12,20 +12,28 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.core.widget.doOnTextChanged
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.Navigation
 import com.example.session2.R
 import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentOTPVerBinding
+import com.example.session2.viewmodel.AuthViewModel
+import io.github.jan.supabase.gotrue.user.UserInfo
+import kotlinx.coroutines.launch
 
 
 class OTPVerFragment : Fragment() {
 
     private lateinit var binding: FragmentOTPVerBinding
+    private lateinit var authViewModel: AuthViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentOTPVerBinding.inflate(inflater,container,false)
+        authViewModel = ViewModelProvider(requireActivity())[AuthViewModel::class.java]
 
         binding.oOne.doAfterTextChanged {
             if (binding.oOne.text.toString().length == 1){
@@ -84,6 +92,34 @@ class OTPVerFragment : Fragment() {
                 }
             }catch (e:Exception){
                 Helper.alert(requireContext(),resources.getString(R.string.error),resources.getString(R.string.error_email_mes))
+            }
+        }
+
+        var email = ""
+        authViewModel.currentEmail.observe(viewLifecycleOwner){
+            if (it != null){
+                email = it
+            }
+        }
+
+        binding.sendOTP.setOnClickListener {
+            try {
+                var chekOTP: UserInfo? = null
+                lifecycleScope.launch {
+                     chekOTP = authViewModel.checkOTP(email.toString(),
+                        binding.oOne.text.toString()
+                                +binding.oTwo.text.toString()
+                                +binding.oThree.text.toString()
+                                +binding.oFour.text.toString()
+                                +binding.oFive.text.toString()
+                                +binding.oSix.text.toString())
+                }.invokeOnCompletion {
+                    if (chekOTP != null){
+                        Navigation.findNavController(binding.root).navigate(R.id.action_OTPVerFragment_to_newPasswordFragment)
+                    }
+                }
+            }catch (e:Exception){
+                Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
             }
         }
         return binding.root

@@ -7,7 +7,7 @@ package com.example.session2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Switch
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNav =findViewById<BottomNavigationView>(R.id.bottomnav)
         val nameCards = findViewById<TextView>(R.id.name_window)
         val cwindowCard = findViewById<CardView>(R.id.cwindowCard)
+        val arrowback = findViewById<ImageView>(R.id.arrow_backkkkk)
 
         val navController = findNavController(R.id.fragmentContainerView)
         bottomNav.setupWithNavController(navController)
@@ -45,6 +46,11 @@ class MainActivity : AppCompatActivity() {
         stateViewModel.bottomMenuVisible.observe(this){
             if (it != null){
                 bottomNav.isVisible = it
+            }
+        }
+        stateViewModel.arrowback.observe(this){
+            if (it != null){
+                arrowback.isVisible = it
             }
         }
 
