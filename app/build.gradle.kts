@@ -41,12 +41,13 @@ android {
 
 dependencies {
     implementation ("io.ktor:ktor-client-cio:2.3.8")
-    implementation("io.github.jan-tennert.supabase:postgrest-kt:2.1.5")
+    implementation("io.github.jan-tennert.supabase:postgrest-kt:2.3.0")
     implementation ("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation ("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation("com.squareup.picasso:picasso:2.8")
     implementation ("com.github.barteksc:android-pdf-viewer:2.8.2")
     implementation ("com.github.dhaval2404:imagepicker-support:1.7.1")
+    implementation("io.github.jan-tennert.supabase:storage-kt:2.3.0")
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

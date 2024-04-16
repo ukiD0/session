@@ -16,9 +16,12 @@ import com.example.session2.R
 import com.example.session2.common.DbCon
 import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentSignUpBinding
+import com.example.session2.model.Profiles
 import com.example.session2.viewmodel.AuthViewModel
+import com.example.session2.viewmodel.ProfileViewModel
 import com.example.session2.viewmodel.StateViewModel
 import io.github.jan.supabase.gotrue.auth
+import io.github.jan.supabase.gotrue.user.UserInfo
 import kotlinx.coroutines.launch
 
 
@@ -27,6 +30,7 @@ class SignUpFragment : Fragment() {
     private lateinit var binding: FragmentSignUpBinding
     private lateinit var authmodel: AuthViewModel
     private lateinit var statemodel: StateViewModel
+    private lateinit var profileViewModel: ProfileViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -71,17 +75,24 @@ class SignUpFragment : Fragment() {
                 && binding.pass2.editText!!.text.toString() .length > 6
                 && binding.checkb.isChecked){
                 try {
+                    var res: UserInfo? = null
                     lifecycleScope.launch{
                         val phone = binding.number.text.toString()
-                        authmodel.auth(
+                         res = authmodel.auth(
                             binding.email.text.toString(),
                             binding.pass2.editText!!.text.toString(),
                             phone)
+                    }.invokeOnCompletion {
                         try {
-                            val user = DbCon.supabase.auth.currentUserOrNull()
-                            if (user != null) {
-                                Navigation.findNavController(binding.root)
-                                    .navigate(R.id.action_signUpFragment_to_homeFragment)
+                            if (res != null) {
+                                profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
+                                lifecycleScope.launch {
+                                    profileViewModel.setProfileData(Profiles(fullname = binding.name.text.toString(),
+                                        phone = binding.number.text.toString()))
+                                }.invokeOnCompletion {
+                                    Navigation.findNavController(binding.root)
+                                        .navigate(R.id.action_signUpFragment_to_homeFragment)
+                                }
                             }
                         }catch (e:Exception){
                             Helper.alert(requireContext(),e.cause.toString(),e.message.toString())

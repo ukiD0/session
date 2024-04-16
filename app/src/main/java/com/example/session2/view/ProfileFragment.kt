@@ -5,7 +5,10 @@
  * */
 package com.example.session2.view
 
+import android.Manifest
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.BitmapFactory.decodeFile
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -18,6 +21,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.result.registerForActivityResult
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -27,6 +31,7 @@ import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentProfileBinding
 import com.example.session2.model.Profiles
 import com.example.session2.viewmodel.AuthViewModel
+import com.example.session2.viewmodel.BucketViewModel
 import com.example.session2.viewmodel.ProfileViewModel
 import com.example.session2.viewmodel.StateViewModel
 import com.github.dhaval2404.imagepicker.ImagePicker
@@ -38,11 +43,13 @@ class ProfileFragment : Fragment() {
     private lateinit var authModel: AuthViewModel
     private lateinit var stateViewModel: StateViewModel
     private lateinit var profileViewModel: ProfileViewModel
+    private lateinit var bucketViewModel: BucketViewModel
+    private val startForProfileImageResult =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult())
+        { result: ActivityResult ->
+            binding.photo.setImageURI(result.data?.data)
+        }
 
-    private val CAMERA_REQUSET_CODE = 1
-//    val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()){
-//        binding.photo.setImageURI(it)
-//    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,13 +58,28 @@ class ProfileFragment : Fragment() {
         authModel = ViewModelProvider(requireActivity())[AuthViewModel::class.java]
         stateViewModel = ViewModelProvider(requireActivity())[StateViewModel::class.java]
         profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
+        bucketViewModel = ViewModelProvider(requireActivity())[BucketViewModel::class.java]
 
         stateViewModel.setTitle("Profile")
         stateViewModel.setVisible(true)
         stateViewModel.setBottomVisible(true)
 
+
+        var image: ByteArray? = null
+        lifecycleScope.launch {
+            try {
+               image = bucketViewModel.getImage()
+            }catch (e:Exception){
+                Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
+            }
+        }.invokeOnCompletion {
+            if (image != null){
+                binding.photo.setImageBitmap(BitmapFactory.decodeByteArray(image,0,image!!.size))
+            }
+        }
+
         binding.photo.setOnClickListener {
-            ImagePicker.with(this)
+            ImagePicker.with(requireActivity())
                 .compress(1024)			//Final image size will be less than 1 MB(Optional)
                 .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
                 .start()

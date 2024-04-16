@@ -5,12 +5,14 @@
  * */
 package com.example.session2
 
+import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -37,6 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.fragmentContainerView)
         bottomNav.setupWithNavController(navController)
+
 
         stateViewModel.cardVisible.observe(this){
             if (it != null){
