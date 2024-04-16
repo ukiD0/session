@@ -23,11 +23,15 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.session2.R
+import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentProfileBinding
+import com.example.session2.model.Profiles
 import com.example.session2.viewmodel.AuthViewModel
 import com.example.session2.viewmodel.ProfileViewModel
 import com.example.session2.viewmodel.StateViewModel
+import com.github.dhaval2404.imagepicker.ImagePicker
 import kotlinx.coroutines.launch
+import java.io.File
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -35,6 +39,7 @@ class ProfileFragment : Fragment() {
     private lateinit var stateViewModel: StateViewModel
     private lateinit var profileViewModel: ProfileViewModel
 
+    private val CAMERA_REQUSET_CODE = 1
 //    val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()){
 //        binding.photo.setImageURI(it)
 //    }
@@ -49,12 +54,13 @@ class ProfileFragment : Fragment() {
 
         stateViewModel.setTitle("Profile")
         stateViewModel.setVisible(true)
+        stateViewModel.setBottomVisible(true)
 
         binding.photo.setOnClickListener {
-//            val chooser = Intent.createChooser(galleryIntent, "Some text here")
-//            chooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, arrayOf(cameraIntent))
-//            startActivityForResult(chooser, requestCode)
-//            galleryLauncher.launch("image/*")
+            ImagePicker.with(this)
+                .compress(1024)			//Final image size will be less than 1 MB(Optional)
+                .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
+                .start()
         }
 
         binding.logout.setOnClickListener {
@@ -75,9 +81,30 @@ class ProfileFragment : Fragment() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
-//        binding.textHello.text = "Hello" + profileViewModel.fullname
+
+            var name: Profiles? = null
+            lifecycleScope.launch {
+            name = profileViewModel.getProfileData()
+            }.invokeOnCompletion {
+            if (name != null){
+                binding.textHello.setText("Hello " + name?.fullname.toString().split(" ")[0] )
+            }
+            }
+            var money: Profiles? = null
+            lifecycleScope.launch{
+                money = profileViewModel.getProfileData()
+            }.invokeOnCompletion {
+                if(money != null){
+                    binding.moneyText.setText("N" + money?.balance.toString())
+                }
+            }
+
 
         return binding.root
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        binding.photo.setImageURI(data?.data)
+    }
 }

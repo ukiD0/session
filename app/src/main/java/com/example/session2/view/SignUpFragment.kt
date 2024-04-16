@@ -72,7 +72,11 @@ class SignUpFragment : Fragment() {
                 && binding.checkb.isChecked){
                 try {
                     lifecycleScope.launch{
-                        authmodel.auth(binding.email.text.toString(),binding.pass2.editText!!.text.toString())
+                        val phone = binding.number.text.toString()
+                        authmodel.auth(
+                            binding.email.text.toString(),
+                            binding.pass2.editText!!.text.toString(),
+                            phone)
                         try {
                             val user = DbCon.supabase.auth.currentUserOrNull()
                             if (user != null) {

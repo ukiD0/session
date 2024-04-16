@@ -1,9 +1,7 @@
 package com.example.session2.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.session2.common.DbCon
 import com.example.session2.model.Profiles
 import io.github.jan.supabase.gotrue.auth
@@ -11,7 +9,9 @@ import io.github.jan.supabase.gotrue.user.UserInfo
 import io.github.jan.supabase.postgrest.from
 
 class ProfileViewModel:ViewModel() {
+
     private var _user: MutableLiveData<UserInfo> = MutableLiveData()
+
     init {
         _user.value = DbCon.supabase.auth.currentUserOrNull()
     }
@@ -35,7 +35,6 @@ class ProfileViewModel:ViewModel() {
                     Profiles::id_user eq profileData.id_user
                 }
             }.decodeSingleOrNull<Profiles>()
-
         }else{
             return DbCon.supabase.from("profiles").insert(profileData){
                 select()
