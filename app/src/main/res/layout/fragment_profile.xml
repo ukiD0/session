@@ -11,67 +11,81 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.cardview.widget.CardView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="75dp"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="25dp"
             android:layout_marginRight="19dp"
             android:backgroundTint="@color/card_selector">
+
             <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="10dp"
                 android:layout_gravity="center|left"
-                app:cardCornerRadius="60dp"
+                android:layout_marginLeft="12dp"
                 android:background="@drawable/image_shape"
-                >
+                app:cardCornerRadius="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/photo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:src="@drawable/image_boy"
                     android:scaleType="centerCrop"
                     android:scaleX="1"
                     android:scaleY="1"
-                    />
+                    android:src="@drawable/image_boy" />
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_hello"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 style="@style/NameText"
-                android:text="Hello"
-                android:layout_gravity="left"
-                android:layout_marginTop="15dp"
-                android:layout_marginLeft="80dp"/>
-            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_marginLeft="7dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="Hello"
+                app:layout_constraintStart_toEndOf="@+id/cardView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView"
                 style="@style/BalanceText"
+                android:layout_width="wrap_content"
+                android:layout_height="13dp"
+                android:layout_marginLeft="7dp"
                 android:text="Current balance:"
-                android:layout_gravity="left"
-                android:layout_marginTop="35dp"
-                android:layout_marginLeft="80dp"/>
+                app:layout_constraintStart_toEndOf="@+id/cardView"
+                app:layout_constraintTop_toBottomOf="@+id/text_hello" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/money_text"
                 style="@style/MoneyText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="175dp"
-                android:layout_marginTop="35dp"
-                android:text="@string/money" />
+                android:text="money"
+                android:layout_marginTop="2dp"
+                android:layout_marginLeft="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/appCompatTextView"
+                app:layout_constraintStart_toEndOf="@+id/appCompatTextView"
+                app:layout_constraintTop_toTopOf="@+id/appCompatTextView" />
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ic_eye_selecttor"
-                android:layout_gravity="end|center"
                 android:layout_marginRight="12dp"
-                android:backgroundTint="@color/special_tint"/>
+                android:background="@drawable/ic_eye_selecttor"
+                android:backgroundTint="@color/special_tint"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -19,8 +19,11 @@ import io.github.jan.supabase.gotrue.providers.builtin.IDToken
 import io.github.jan.supabase.gotrue.providers.builtin.OTP
 import io.github.jan.supabase.gotrue.user.UserInfo
 import io.github.jan.supabase.postgrest.from
+import kotlinx.serialization.json.JsonElement
+import kotlinx.serialization.json.JsonObjectBuilder
 import kotlinx.serialization.json.buildJsonObject
 import kotlinx.serialization.json.put
+
 
 class AuthViewModel() : ViewModel()  {
 
@@ -33,12 +36,12 @@ class AuthViewModel() : ViewModel()  {
     var currentPhone: LiveData<String> = _currentPhone
 
 
-    suspend fun auth(out_email:String,out_pass:String): UserInfo? {
+    suspend fun auth(out_email:String,out_pass:String,out_phone:String): UserInfo? {
         DbCon.supabase.auth.signUpWith(Email){
             email = out_email
             password = out_pass
             data = buildJsonObject {
-                put("phone",_user.value?.phone)
+                put("phone", out_phone)
             }
         }
         return DbCon.supabase.auth.currentUserOrNull()
