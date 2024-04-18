@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_profileFragment_to_editInformationFragment"
             app:destination="@id/editInformationFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/trackFragment"
@@ -109,6 +112,15 @@
         tools:layout="@layout/fragment_edit_information" >
         <action
             android:id="@+id/action_editInformationFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.example.session2.view.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

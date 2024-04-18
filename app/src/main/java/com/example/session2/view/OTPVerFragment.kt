@@ -6,6 +6,7 @@
 package com.example.session2.view
 
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -103,9 +104,38 @@ class OTPVerFragment : Fragment() {
             }
         }
 
-        binding.textSignUp.setOnClickListener {
+        var min = 60
+        val timer = object : CountDownTimer(60000,1000){
+            override fun onTick(p0: Long) = run{
+                    min --
+                if (min <= 0 ){
+                    cancel()
+                    binding.sendOTP.isEnabled = false
+                    binding.timer.text = "resend"
+                    binding.timer.isEnabled= true
+                    min = 60
 
+                }else{
+                    binding.timer.text = "$min"
+                }
+                }
+
+            override fun onFinish() {
+            }
         }
+
+        binding.timer.setOnClickListener {
+                lifecycleScope.launch {
+                    try {
+                        authViewModel.resendOTP(email)
+                    }catch (e:Exception){
+                        Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
+                    }
+                }
+            timer.start()
+            binding.timer.isEnabled = false
+        }
+        timer.start()
 
         binding.sendOTP.setOnClickListener {
             try {

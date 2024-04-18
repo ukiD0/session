@@ -47,14 +47,16 @@
             android:layout_marginTop="24dp"
             android:inputType="text"
             style="@style/h2"/>
-        <androidx.appcompat.widget.AppCompatEditText
+        <br.com.sapereaude.maskedEditText.MaskedEditText
             android:id="@+id/number"
             android:layout_width="match_parent"
             android:layout_height="44dp"
             android:background="@drawable/input_gary"
             android:layout_marginTop="8dp"
-            android:hint="+7(999)999-99-99"
-            android:inputType="number"
+            android:hint="9999999999"
+            android:inputType="phone"
+            android:textColor="@color/drk_gary"
+            app:mask="+7(###)###-##-##"
             style="@style/input_text"/>
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"

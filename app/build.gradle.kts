@@ -10,9 +10,9 @@ android {
 
     defaultConfig {
         applicationId = "com.example.session2"
-        minSdk = 26
+        minSdk = 29
         targetSdk = 34
-        versionCode = 1
+        versionCode = 165
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -48,6 +48,12 @@ dependencies {
     implementation ("com.github.barteksc:android-pdf-viewer:2.8.2")
     implementation ("com.github.dhaval2404:imagepicker-support:1.7.1")
     implementation("io.github.jan-tennert.supabase:storage-kt:2.3.0")
+    implementation ("androidx.activity:activity-ktx:1.8.2")
+    implementation ("androidx.fragment:fragment-ktx:1.6.2")
+    implementation ("org.osmdroid:osmdroid-android:6.1.18")
+    implementation("ru.egslava:MaskedEditText:1.0.5")
+    implementation("com.google.android.gms:play-services-location:21.1.0")
+
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

@@ -4,11 +4,14 @@ import android.content.Intent
 import android.graphics.pdf.PdfRenderer
 import android.net.Uri
 import android.os.Bundle
+import android.telephony.PhoneNumberFormattingTextWatcher
+import android.text.style.URLSpan
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -45,7 +48,7 @@ class SignUpFragment : Fragment() {
         binding.textSignIn.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_signUpFragment_to_logInFragment)
         }
-
+        
         binding.linkforpdf.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_signUpFragment_to_pdfViewFragment)
         }
@@ -64,6 +67,12 @@ class SignUpFragment : Fragment() {
         binding.checkb.setOnClickListener {
             binding.btnSignUp.isEnabled = binding.checkb.isChecked
         }
+        //make text black color
+        binding.number.doOnTextChanged { _, _, _, _ ->
+            binding.number.setTextColor(resources.getColor(R.color.black))
+        }
+
+
 
         binding.btnSignUp.setOnClickListener {
             if (binding.name.text.toString().length > 2

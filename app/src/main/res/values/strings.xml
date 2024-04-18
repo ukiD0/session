@@ -7,8 +7,9 @@
     <string name="SignUn">Already have an account?<a href="">Sign up</a></string>
     <string name="Forgot"><a href="">Forgot Password?</a></string>
     <string name="Remember">Remember password? Back to<a href=""> Sign in</a></string>
-    <string name="Code">If you didn’t receive code, <a href="">resend</a></string>
+    <string name="Code">If you didn’t receive code, </string>
     <string name="error">Ошибка</string>
     <string name="error_email_mes">Поле заполнено неверно</string>
     <string name="money"><a href="">money</a></string>
+    <string name="resend">resend</string>
 </resources>

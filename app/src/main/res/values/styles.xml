@@ -12,6 +12,12 @@
         <item name="android:textFontWeight" tools:targetApi="p">500</item>
         <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
+    <style name="h2blue">
+        <item name="android:textColor">@color/primary_blue</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
     <style name="input_text">
         <item name="android:textColor">@color/text_asblack</item>
         <item name="android:textSize">14sp</item>

@@ -80,6 +80,10 @@ class AuthViewModel() : ViewModel()  {
         DbCon.supabase.auth.verifyEmailOtp(OtpType.Email.EMAIL,out_email,out_token)
         return DbCon.supabase.auth.currentUserOrNull()
     }
+    suspend fun resendOTP(out_email:String): UserInfo? {
+        DbCon.supabase.auth.resendEmail(OtpType.Email.SIGNUP,out_email)
+        return DbCon.supabase.auth.currentUserOrNull()
+    }
      suspend fun editProfile(out_phone: String): UserInfo? {
          _currentPhone.value = out_phone
          DbCon.supabase.auth.modifyUser {

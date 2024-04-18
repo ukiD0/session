@@ -12,5 +12,9 @@
 <!--        <item name="colorSwitchThumbNormal">@color/white</item>-->
 <!--        <item name="android:colorForeground">@color/drk_gary</item>-->
 <!--    </style>-->
+<!--    <style name="tryunderline" parent="Widget.AppCompat.TextView">-->
+<!--        <item name="android:textColorHighlight">@null</item>-->
+<!--        <item name="android:layout_span">@null</item>-->
+<!--    </style>-->
 
 </resources>

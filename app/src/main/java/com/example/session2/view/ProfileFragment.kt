@@ -6,7 +6,9 @@
 package com.example.session2.view
 
 import android.Manifest
+import android.content.ContentResolver
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.BitmapFactory.decodeFile
 import android.os.Bundle
@@ -36,7 +38,9 @@ import com.example.session2.viewmodel.ProfileViewModel
 import com.example.session2.viewmodel.StateViewModel
 import com.github.dhaval2404.imagepicker.ImagePicker
 import kotlinx.coroutines.launch
+import java.io.ByteArrayOutputStream
 import java.io.File
+import java.io.InputStream
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -65,6 +69,8 @@ class ProfileFragment : Fragment() {
         stateViewModel.setBottomVisible(true)
 
 
+
+
         var image: ByteArray? = null
         lifecycleScope.launch {
             try {
@@ -76,10 +82,12 @@ class ProfileFragment : Fragment() {
             if (image != null){
                 binding.photo.setImageBitmap(BitmapFactory.decodeByteArray(image,0,image!!.size))
             }
+                binding.mainContainer.isVisible = true
+                binding.progBar.isVisible = false
         }
 
         binding.photo.setOnClickListener {
-            ImagePicker.with(requireActivity())
+            ImagePicker.with(this)
                 .compress(1024)			//Final image size will be less than 1 MB(Optional)
                 .maxResultSize(1080, 1080)	//Final image resolution will be less than 1080 x 1080(Optional)
                 .start()
@@ -103,6 +111,9 @@ class ProfileFragment : Fragment() {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
         }
+        binding.aboutus.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment_to_mapFragment)
+        }
 
             var name: Profiles? = null
             lifecycleScope.launch {
@@ -122,11 +133,31 @@ class ProfileFragment : Fragment() {
             }
 
 
+
         return binding.root
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         binding.photo.setImageURI(data?.data)
+        var inputStream : InputStream? = null
+        try {
+            inputStream = requireActivity().contentResolver.openInputStream(data?.data!!)
+            val bitMap = BitmapFactory.decodeStream(inputStream)
+            val outPutStream = ByteArrayOutputStream()
+            bitMap.compress(Bitmap.CompressFormat.JPEG,100,outPutStream)
+            lifecycleScope.launch{
+                try {
+                    bucketViewModel.uploadImage(outPutStream.toByteArray())
+                }catch (e:Exception){
+                    Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
+                }
+            }
+        }catch (e:Exception){
+            Log.e("error",e.cause.toString())
+        }finally {
+            inputStream?.close()
+        }
+
     }
 }

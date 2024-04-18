@@ -92,17 +92,32 @@
                 android:layout_marginRight="30dp"/>
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/text_SignUp"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/Code"
-            style="@style/h2"
+            android:orientation="horizontal"
             android:layout_marginTop="15dp"
-            android:layout_gravity="center"
-            android:textColorLink="@color/primary_blue"
-            android:enabled="false"
-            />
+            android:layout_gravity="center">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Code"
+                style="@style/h2"
+                android:layout_gravity="center"
+                android:textColorLink="@color/primary_blue"
+                android:enabled="false"
+                />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/timer"
+                android:text="@string/resend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColorLink="@color/primary_blue"
+                android:enabled="false"
+                style="@style/h2blue"/>
+        </LinearLayout>
+
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/sendOTP"

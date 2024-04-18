@@ -25,6 +25,7 @@ import com.example.session2.viewmodel.StateViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import io.github.jan.supabase.gotrue.SessionStatus
 import io.github.jan.supabase.gotrue.auth
+import io.github.jan.supabase.gotrue.user.UserInfo
 import kotlinx.coroutines.launch
 
 
@@ -78,13 +79,25 @@ class LogInFragment : Fragment() {
 
         binding.btnLogIN.setOnClickListener {
             try {
+                binding.progBar.isVisible = true
+                binding.mainContaienrr.isVisible = false
+                var res: UserInfo? = null
                 lifecycleScope.launch {
-                    val res = authmodel.registration(
-                        binding.textEmail.text.toString() ,
-                        binding.textPass.editText!!.text.toString()
-                    )
+                    try {
+                        res = authmodel.registration(
+                            binding.textEmail.text.toString() ,
+                            binding.textPass.editText!!.text.toString()
+                        )
+                    }catch (e:Exception){
+                        Helper.alert(requireActivity(),e.cause.toString(),e.message.toString())
+                    }
+
+                }.invokeOnCompletion {
                     if (res != null){
                         Navigation.findNavController(binding.root).navigate(R.id.action_logInFragment_to_homeFragment)
+                    }else{
+                        binding.progBar.isVisible = false
+                        binding.mainContaienrr.isVisible = true
                     }
                 }
             }catch (e:Exception){
