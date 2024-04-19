@@ -112,7 +112,7 @@ class ProfileFragment : Fragment() {
             }
         }
         binding.aboutus.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment_to_mapFragment)
+            Navigation.findNavController(binding.root).navigate(R.id.action_profileFragment_to_yandexMapFragment2)
         }
 
             var name: Profiles? = null
@@ -141,6 +141,8 @@ class ProfileFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         binding.photo.setImageURI(data?.data)
         var inputStream : InputStream? = null
+        binding.progBar.isVisible = true
+        binding.mainContainer.isVisible = false
         try {
             inputStream = requireActivity().contentResolver.openInputStream(data?.data!!)
             val bitMap = BitmapFactory.decodeStream(inputStream)
@@ -152,6 +154,9 @@ class ProfileFragment : Fragment() {
                 }catch (e:Exception){
                     Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
                 }
+            }.invokeOnCompletion {
+                binding.progBar.isVisible = false
+                binding.mainContainer.isVisible = true
             }
         }catch (e:Exception){
             Log.e("error",e.cause.toString())

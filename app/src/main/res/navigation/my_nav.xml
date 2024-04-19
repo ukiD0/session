@@ -83,8 +83,8 @@
             android:id="@+id/action_profileFragment_to_editInformationFragment"
             app:destination="@id/editInformationFragment" />
         <action
-            android:id="@+id/action_profileFragment_to_mapFragment"
-            app:destination="@id/mapFragment" />
+            android:id="@+id/action_profileFragment_to_yandexMapFragment2"
+            app:destination="@id/yandexMapFragment2" />
     </fragment>
     <fragment
         android:id="@+id/trackFragment"
@@ -118,9 +118,14 @@
         android:id="@+id/mapFragment"
         android:name="com.example.session2.view.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" >
+        tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/yandexMapFragment2"
+        android:name="com.example.session2.view.YandexMapFragment"
+        android:label="fragment_yandex_map"
+        tools:layout="@layout/fragment_yandex_map" >
         <action
-            android:id="@+id/action_mapFragment_to_profileFragment"
+            android:id="@+id/action_yandexMapFragment2_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

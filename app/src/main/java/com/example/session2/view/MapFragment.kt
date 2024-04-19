@@ -52,7 +52,7 @@ class MapFragment : Fragment() {
         stateViewModel.setTitle("Map")
         val arrback = requireActivity().findViewById<ImageView>(R.id.arrow_backkkkk)
         arrback.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_profileFragment)
+//            Navigation.findNavController(binding.root).navigate(R.id.action_mapFragment_to_profileFragment)
         }
 
         //start work with map
