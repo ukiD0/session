@@ -36,7 +36,7 @@ class AuthViewModel() : ViewModel()  {
     var currentPhone: LiveData<String> = _currentPhone
 
 
-    suspend fun auth(out_email:String,out_pass:String): User,Info? {
+    suspend fun auth(out_email:String,out_pass:String): UserInfo? {
         DbCon.supabase.auth.signUpWith(Email){
             email = out_email
             password = out_pass
