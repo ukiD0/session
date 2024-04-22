@@ -36,13 +36,10 @@ class AuthViewModel() : ViewModel()  {
     var currentPhone: LiveData<String> = _currentPhone
 
 
-    suspend fun auth(out_email:String,out_pass:String,out_phone:String): UserInfo? {
+    suspend fun auth(out_email:String,out_pass:String): User,Info? {
         DbCon.supabase.auth.signUpWith(Email){
             email = out_email
             password = out_pass
-            data = buildJsonObject {
-                put("phone", out_phone)
-            }
         }
         return DbCon.supabase.auth.currentUserOrNull()
     }

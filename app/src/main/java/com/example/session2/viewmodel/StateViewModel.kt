@@ -1,9 +1,13 @@
 package com.example.session2.viewmodel
 
 import android.graphics.Color
+import android.view.View
+import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 
 class StateViewModel : ViewModel() {
     private var _nameCards = MutableLiveData<String>()

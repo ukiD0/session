@@ -5,26 +5,19 @@
  * */
 package com.example.session2.view
 
-import android.Manifest
-import android.content.ContentResolver
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.graphics.BitmapFactory.decodeFile
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.result.registerForActivityResult
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.cardview.widget.CardView
-import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
@@ -39,8 +32,8 @@ import com.example.session2.viewmodel.StateViewModel
 import com.github.dhaval2404.imagepicker.ImagePicker
 import kotlinx.coroutines.launch
 import java.io.ByteArrayOutputStream
-import java.io.File
 import java.io.InputStream
+
 
 class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
@@ -68,9 +61,6 @@ class ProfileFragment : Fragment() {
         stateViewModel.setVisible(true)
         stateViewModel.setBottomVisible(true)
 
-
-
-
         var image: ByteArray? = null
         lifecycleScope.launch {
             try {
@@ -85,6 +75,7 @@ class ProfileFragment : Fragment() {
                 binding.mainContainer.isVisible = true
                 binding.progBar.isVisible = false
         }
+
 
         binding.photo.setOnClickListener {
             ImagePicker.with(this)
@@ -137,9 +128,10 @@ class ProfileFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        binding.photo.setImageURI(data?.data)
+        binding.photo.setImageURI(data?.data!!)
         var inputStream : InputStream? = null
         binding.progBar.isVisible = true
         binding.mainContainer.isVisible = false

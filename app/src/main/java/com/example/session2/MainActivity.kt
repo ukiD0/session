@@ -19,18 +19,22 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.session2.common.APIkey
+import com.example.session2.view.YandexMapFragment
 import com.example.session2.viewmodel.ProfileViewModel
 import com.example.session2.viewmodel.StateViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yandex.mapkit.MapKitFactory
+import com.yandex.mapkit.layers.ObjectEvent
+import com.yandex.mapkit.user_location.UserLocationObjectListener
+import com.yandex.mapkit.user_location.UserLocationView
 import kotlinx.coroutines.launch
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), UserLocationObjectListener {
     private lateinit var stateViewModel: StateViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        MapKitFactory.setApiKey(APIkey.MAPKIT_API_KEY)
         setContentView(R.layout.activity_main)
         stateViewModel = ViewModelProvider(this)[StateViewModel::class.java]
 
@@ -68,5 +72,19 @@ class MainActivity : AppCompatActivity() {
 
         //For icons tint :)))))))
         bottomNav.itemIconTintList = null
+    }
+
+    override fun onObjectAdded(userLocationView: UserLocationView) {
+        Log.e(YandexMapFragment::class.java.simpleName, userLocationView.arrow.geometry.latitude.toString())
+        Log.e(YandexMapFragment::class.java.simpleName, userLocationView.arrow.geometry.longitude.toString())
+    }
+
+    override fun onObjectRemoved(p0: UserLocationView) {
+        Log.e("test", "removed")
+    }
+
+    override fun onObjectUpdated(userLocationView: UserLocationView, p1: ObjectEvent) {
+        Log.e(YandexMapFragment::class.java.simpleName, userLocationView.arrow.geometry.latitude.toString())
+        Log.e(YandexMapFragment::class.java.simpleName, userLocationView.arrow.geometry.longitude.toString())
     }
 }

@@ -80,17 +80,15 @@ class SignUpFragment : Fragment() {
                 && binding.email.text.toString().length > 2
                 && binding.email.text.toString().contains("@")
                 && binding.email.text.toString().contains(".")
-                && binding.pass.editText!!.text.toString().equals(binding.pass2.editText!!.text.toString())
+                && binding.pass.editText!!.text.toString() == binding.pass2.editText!!.text.toString()
                 && binding.pass2.editText!!.text.toString() .length > 6
                 && binding.checkb.isChecked){
                 try {
                     var res: UserInfo? = null
                     lifecycleScope.launch{
-                        val phone = binding.number.text.toString()
                          res = authmodel.auth(
                             binding.email.text.toString(),
-                            binding.pass2.editText!!.text.toString(),
-                            phone)
+                            binding.pass2.editText!!.text.toString())
                     }.invokeOnCompletion {
                         try {
                             if (res != null) {
