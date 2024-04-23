@@ -19,7 +19,7 @@ class TransactionViewModel:ViewModel() {
         _user.value = DbCon.supabase.auth.currentUserOrNull()
     }
 
-    suspend fun getTransaction(data: Transactions){
+    suspend fun getTransaction(){
         _trans.value = DbCon.supabase.from("transactions").select{
             filter {
                 Transactions::id_user eq _user.value?.id

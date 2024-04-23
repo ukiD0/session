@@ -1,5 +1,8 @@
 package com.example.session2.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Transactions(
     var id: String? = null,
     var id_user: String? = null,

@@ -10,8 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.session2.R
+import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentTransactListBinding
-import com.example.session2.model.Transactions
 import com.example.session2.viewmodel.StateViewModel
 import com.example.session2.viewmodel.TransactionViewModel
 import kotlinx.coroutines.launch
@@ -46,9 +46,15 @@ class WalletTransactionFragment : Fragment() {
                 binding.list.adapter = adapter
             }
         }
-//        lifecycleScope.launch {
-//            transactionViewModel.getTransaction(linerlayoutmanager)
-//        }
+
+        try {
+            lifecycleScope.launch {
+                transactionViewModel.getTransaction()
+            }
+        }catch (e:Exception){
+            Helper.alert(requireActivity(),e.cause.toString(),e.message.toString())
+        }
+
 
 
         binding.paymentmethod.setOnClickListener {
