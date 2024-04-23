@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.DeliverySucFragment">
+
+   <androidx.appcompat.widget.LinearLayoutCompat
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:paddingBottom="30dp">
+
+       <ProgressBar
+           android:indeterminateTint="#FE9821"
+           android:layout_width="120dp"
+           android:layout_height="120dp"
+           android:layout_gravity="center"
+           android:layout_marginTop="90dp"
+           android:visibility="visible"/>
+       <androidx.appcompat.widget.AppCompatImageView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:background="@drawable/good_tick"
+           android:layout_gravity="center"
+           android:layout_marginTop="90dp"
+           android:visibility="gone"/>
+       <androidx.appcompat.widget.AppCompatTextView
+           android:id="@+id/deliverysuc"
+           android:layout_width="wrap_content"
+           android:layout_gravity="center"
+           android:layout_height="wrap_content"
+           android:text="Delivery Successful"
+           android:layout_marginTop="75dp"
+           style="@style/suc"
+           android:visibility="gone"/>
+       <androidx.appcompat.widget.AppCompatTextView
+           android:id="@+id/textAfterDelivery"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:visibility="gone"
+           android:text="Your Item has been delivered successfully"/>
+
+       <Space
+           android:layout_width="0dp"
+           android:layout_height="200dp"
+           android:layout_weight="1"/>
+
+       <androidx.appcompat.widget.AppCompatTextView
+           style="@style/rate"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:text="Rate Rider"/>
+       <androidx.appcompat.widget.LinearLayoutCompat
+           android:id="@+id/stars"
+           android:layout_width="wrap_content"
+           android:layout_marginTop="16dp"
+           android:layout_gravity="center"
+           android:layout_height="wrap_content">
+           <androidx.appcompat.widget.AppCompatImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="16dp"
+               android:background="@drawable/star_icon"/>
+           <androidx.appcompat.widget.AppCompatImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="16dp"
+               android:background="@drawable/star_icon"/>
+           <androidx.appcompat.widget.AppCompatImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="16dp"
+               android:background="@drawable/star_icon"/>
+           <androidx.appcompat.widget.AppCompatImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="16dp"
+               android:background="@drawable/star_icon"/>
+           <androidx.appcompat.widget.AppCompatImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginRight="16dp"
+               android:background="@drawable/star_icon"/>
+       </androidx.appcompat.widget.LinearLayoutCompat>
+       <androidx.cardview.widget.CardView
+           android:layout_marginTop="36dp"
+           android:layout_width="match_parent"
+           android:layout_marginRight="23dp"
+           android:layout_marginLeft="23dp"
+           android:layout_height="50dp">
+           <androidx.appcompat.widget.AppCompatImageView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:background="@drawable/ic_baseline_feedback"
+               android:layout_gravity="left|center"
+               android:layout_marginLeft="12dp"/>
+           <androidx.appcompat.widget.AppCompatEditText
+               android:layout_width="match_parent"
+               android:layout_height="50dp"
+               android:maxLength="10"
+               android:paddingLeft="40dp"
+               android:inputType="text"
+               android:hint="Add feedback"
+               style="@style/btn_h2"
+               android:background="@drawable/edittextt"/>
+       </androidx.cardview.widget.CardView>
+       <androidx.appcompat.widget.AppCompatButton
+           android:id="@+id/btndone"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="Done"
+           android:layout_weight="1"
+           android:layout_marginTop="75dp"
+           android:layout_marginLeft="23dp"
+           android:layout_marginRight="23dp"
+           style="@style/btn"
+           android:background="@drawable/btn_selector"/>
+
+   </androidx.appcompat.widget.LinearLayoutCompat>
+
+</ScrollView>

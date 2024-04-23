@@ -1,10 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.TrackFragment">
+    
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="40dp">
+        
+        <com.yandex.mapkit.mapview.MapView
+            android:id="@+id/mapview"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tracking Number"
+            android:layout_marginTop="42dp"
+            android:layout_marginLeft="25dp"
+            style="@style/tracking"/>
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_marginTop="24dp"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="25dp"
+            android:layout_height="wrap_content">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginRight="3dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sun_ic"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/trackNumder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R-7458-4567-4434-5854"
+                style="@style/trackNumver"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Package Status"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="16dp"
+            style="@style/packgStatus"/>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="24dp">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/lines_ic"
+                android:layout_marginLeft="24dp"/>
+            <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/gray"
+                android:layout_marginLeft="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Courier requested"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/gray"
+                android:layout_marginTop="5dp"
+                android:textColor="#EC8000"
+                android:layout_marginLeft="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="July 7 2022 08:00am"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/gray"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Package ready for delivery"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/gray"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#EC8000"
+                    android:layout_marginLeft="7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="July 7 2022 08:30am"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/gray"
+                    android:textColor="@color/primary_blue"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Package in transit"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/gray"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#EC8000"
+                    android:layout_marginLeft="7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="July 7 2022 10:30am"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/gray"
+                    android:layout_marginLeft="7dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Package delivered"/>
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/gray"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/drk_gary"
+                    android:layout_marginLeft="7dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="July 7 2022 10:30am"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/viewpackageinfo"
+            android:background="@drawable/btn_selector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="View Package Info"
+            android:layout_marginRight="24dp"
+            android:layout_marginLeft="24dp"
+            android:textAllCaps="false"
+            android:layout_weight="1"
+            style="@style/info"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
 
 
 
-</LinearLayout>
+</ScrollView>

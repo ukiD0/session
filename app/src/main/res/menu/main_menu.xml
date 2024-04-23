@@ -9,7 +9,7 @@
     <item android:title="Wallet"
         android:checked="true"
         android:icon="@drawable/wallet_selector"
-        android:id="@+id/walletFragment"/>
+        android:id="@+id/walletTransactionFragment"/>
     <item android:title="Track"
         android:checked="true"
         android:icon="@drawable/car_selector"

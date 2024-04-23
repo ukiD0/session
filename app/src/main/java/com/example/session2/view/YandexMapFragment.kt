@@ -2,8 +2,10 @@ package com.example.session2.view
 
 import android.Manifest
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.PointF
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -22,6 +24,7 @@ import com.example.session2.viewmodel.PointsViewModel
 import com.example.session2.viewmodel.StateViewModel
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.PicassoProvider
+import com.squareup.picasso.Target
 import com.yandex.mapkit.MapKit
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.geometry.BoundingBox
@@ -45,6 +48,7 @@ import com.yandex.runtime.image.ImageProvider
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.launch
+import java.lang.Exception
 
 
 class YandexMapFragment : Fragment(), UserLocationObjectListener, ClusterTapListener, ClusterListener {
@@ -90,20 +94,44 @@ class YandexMapFragment : Fragment(), UserLocationObjectListener, ClusterTapList
             if (!list.isNullOrEmpty()){
                 val clusterizedCollection = binding.mapview.map.mapObjects.addClusterizedPlacemarkCollection(this@YandexMapFragment)
                 val newPoinst:ArrayList<Point> = arrayListOf()
+                val pinsCollection = binding.mapview.map.mapObjects.addCollection()
+                Log.e("img",list.toString())
                 list.forEach {point ->
-                    newPoinst.add(Point(point.latitude!!.toDouble(), point.longitude!!.toDouble() ))
+//                    newPoinst.add(Point(point.latitude!!.toDouble(), point.longitude!!.toDouble() ))
+//                    pinsCollection.addPlacemark().apply {
+//                        geometry = Point(point.latitude!!.toDouble(),point.longitude!!.toDouble())
+//                        setIcon(ImageProvider.fromBitmap(Picasso.get().load(point.pin_image).get()))
+//                    }
 //                    Log.e("test", point.toString())
-//                    clusterizedCollection.addPlacemark(
-//                        Point(point.latitude!!.toDouble(), point.longitude!!.toDouble()),
-//                        ImageProvider.fromBitmap(Picasso.get().load(point.pin_image!!).get()),
-//                        IconStyle().setScale(1f)
-//                    )
+                    Picasso.get().load(point.pin_image).into(object : Target{
+                        override fun onBitmapLoaded(bitmap: Bitmap?, from: Picasso.LoadedFrom?) {
+//                            Log.e("loadede","11")
+                            clusterizedCollection.addPlacemark().apply {
+                                geometry = Point(point.latitude!!.toDouble(),point.longitude!!.toDouble())
+                                setIcon(ImageProvider.fromBitmap(bitmap))
+                            }
+                            clusterizedCollection.clusterPlacemarks(60.0, 15)
+//
+//                            pinsCollection.addPlacemark().apply {
+//                            geometry = Point(point.latitude!!.toDouble(),point.longitude!!.toDouble())
+//                            setIcon(ImageProvider.fromBitmap(bitmap))
+//                             }
+                        }
+
+                        override fun onBitmapFailed(e: Exception?, errorDrawable: Drawable?) {
+                            Log.e("loadedFailed","123")
+                        }
+
+                        override fun onPrepareLoad(placeHolderDrawable: Drawable?) {
+                            Log.e("preparedLoaded","323")
+                        }
+
+                    })
+
                 }
-                clusterizedCollection.addPlacemarks(
-                    newPoinst,
-                    ImageProvider.fromResource(requireContext(), R.drawable.icon_png_pawww),
-                    IconStyle().setScale(0.1f))
-                clusterizedCollection.clusterPlacemarks(60.0, 15)
+//                clusterizedCollection.addEmptyPlacemarks(
+//                    newPoinst)
+
             }
         }
 

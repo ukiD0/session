@@ -13,6 +13,7 @@ import android.view.ViewGroup
 import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import com.example.session2.R
 import com.example.session2.databinding.FragmentTrackBinding
 import com.example.session2.viewmodel.StateViewModel
@@ -28,7 +29,13 @@ class TrackFragment : Fragment() {
     ): View? {
        binding = FragmentTrackBinding.inflate(inflater,container,false)
         stateViewModel = ViewModelProvider(requireActivity())[StateViewModel::class.java]
+
         stateViewModel.setVisible(false)
+        stateViewModel.setBottomVisible(true)
+
+        binding.viewpackageinfo.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_trackFragment_to_sendAPAckageFragment)
+        }
 
 
         return binding.root

@@ -82,6 +82,8 @@
                 android:layout_height="45dp"
                 android:padding="0dp"
                 android:inputType="textPassword"
+                android:text="12345678"
+                android:freezesText="true"
                 android:background="@drawable/input_gary"
                 style="@style/input_text"
                 android:hint="**********"

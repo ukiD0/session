@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view.AddPaymentMethFragment"
+    android:orientation="vertical">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="67dp"
+        android:layout_marginRight="25dp"
+        android:elevation="10dp"
+        >
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:button="@null"
+            android:background="@drawable/selector_radio"
+            android:layout_gravity="left|center"
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/primary_blue" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/btn_h1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:text="Pay with wallet"
+            android:textSize="16dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/btn_h2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="complete the payment using your e wallet" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:id="@+id/cardView4"
+        android:layout_width="match_parent"
+        android:layout_height="84dp"
+        android:layout_marginTop="12dp"
+        android:elevation="10dp">
+        <RadioButton
+            android:id="@+id/rb2"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:button="@null"
+            android:background="@drawable/selector_radio"
+            android:layout_gravity="left|center"
+            android:layout_marginLeft="10dp"
+            android:buttonTint="@color/primary_blue" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/btn_h1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:text="Credit / debit card"
+            android:textSize="16dp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/btn_h2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:text="complete the payment using your debit card" />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:id="@+id/cards"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:elevation="10dp"
+        android:visibility="invisible">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp">
+
+            <RadioButton
+                android:id="@+id/rb3"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:button="@null"
+                android:background="@drawable/selector_radio"
+                android:layout_gravity="left|center"
+                android:layout_marginLeft="10dp"
+                android:buttonTint="@color/primary_blue" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="25dp"
+                android:text="**** **** 3323"
+                android:textSize="16dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/urn" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="100dp">
+            <RadioButton
+                android:id="@+id/rb4"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:button="@null"
+                android:background="@drawable/selector_radio"
+                android:layout_gravity="left|center"
+                android:layout_marginLeft="10dp"
+                android:buttonTint="@color/primary_blue" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="25dp"
+                android:text="**** **** 3323"
+                android:textSize="16dp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|center"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/urn" />
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
+
+   <androidx.appcompat.widget.AppCompatButton
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:text="Proceed to pay"
+       android:background="@drawable/btn_selector"
+       android:layout_marginRight="24dp"
+       android:layout_marginLeft="24dp"
+       style="@style/btnprocesssd"
+       android:textAllCaps="false"
+       android:layout_marginBottom="100dp"
+       />
+
+</LinearLayout>

@@ -87,7 +87,101 @@
         <item name="android:textFontWeight" tools:targetApi="p">400</item>
         <item name="android:fontFamily">@font/roboto</item>
     </style>
-
+    <style name="Top">
+        <item name="android:textColor">@color/text_asblack</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textFontWeight" tools:targetApi="p">700</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+    <style name="threecard">
+        <item name="android:textColor">@color/text_asblack</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textFontWeight" tools:targetApi="p">400</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="transHistory">
+        <item name="android:textColor">@color/text_asblack</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+    <style name="item">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textFontWeight" tools:targetApi="p">500</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="itemName">
+        <item name="android:textColor">@color/text_asblack</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textFontWeight" >500</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+    <style name="dateItem">
+        <item name="android:textColor">@color/drk_gary</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textFontWeight" >400</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="tracking">
+        <item name="android:textColor">@color/text_asblack</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textFontWeight" >500</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+    <style name="trackNumver">
+        <item name="android:textColor">@color/primary_blue</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textFontWeight" >400</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="packgStatus">
+        <item name="android:textColor">@color/drk_gary</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textFontWeight" >400</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="info">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textFontWeight" >700</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+    <style name="gray">
+        <item name="android:textColor">@color/drk_gary</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textFontWeight" >400</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="btnprocesssd">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textFontWeight" >700</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+    </style>
+    <style name="btn_h1">
+        <item name="android:textColor">@color/text_asblack</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textFontWeight" >400</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="btn_h2">
+        <item name="android:textColor">@color/drk_gary</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textFontWeight" >400</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="rate">
+        <item name="android:textColor">@color/primary_blue</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textFontWeight" >400</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="suc">
+        <item name="android:textColor">@color/text_asblack</item>
+        <item name="android:textSize">24dp</item>
+        <item name="android:textFontWeight" >500</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
 
 
 </resources>

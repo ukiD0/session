@@ -90,12 +90,11 @@
         android:id="@+id/trackFragment"
         android:name="com.example.session2.view.TrackFragment"
         android:label="fragment_track"
-        tools:layout="@layout/fragment_track" />
-    <fragment
-        android:id="@+id/walletFragment"
-        android:name="com.example.session2.view.WalletFragment"
-        android:label="fragment_wallet"
-        tools:layout="@layout/fragment_wallet" />
+        tools:layout="@layout/fragment_track" >
+        <action
+            android:id="@+id/action_trackFragment_to_sendAPAckageFragment"
+            app:destination="@id/sendAPAckageFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pdfViewFragment"
         android:name="com.example.session2.view.PdfViewFragment"
@@ -126,6 +125,45 @@
         tools:layout="@layout/fragment_yandex_map" >
         <action
             android:id="@+id/action_yandexMapFragment2_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/walletTransactionFragment"
+        android:name="com.example.session2.view.WalletTransactionFragment"
+        android:label="fragment_transact_list"
+        tools:layout="@layout/fragment_transact_list" >
+        <action
+            android:id="@+id/action_walletTransactionFragment_to_addPaymentMethFragment"
+            app:destination="@id/addPaymentMethFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sendAPAckageFragment"
+        android:name="com.example.session2.view.SendAPAckageFragment"
+        android:label="fragment_send_a_p_ackage"
+        tools:layout="@layout/fragment_send_a_p_ackage" >
+        <action
+            android:id="@+id/action_sendAPAckageFragment_to_trackFragment"
+            app:destination="@id/trackFragment" />
+        <action
+            android:id="@+id/action_sendAPAckageFragment_to_deliverySucFragment"
+            app:destination="@id/deliverySucFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPaymentMethFragment"
+        android:name="com.example.session2.view.AddPaymentMethFragment"
+        android:label="fragment_add_payment_meth"
+        tools:layout="@layout/fragment_add_payment_meth" >
+        <action
+            android:id="@+id/action_addPaymentMethFragment_to_walletTransactionFragment"
+            app:destination="@id/walletTransactionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/deliverySucFragment"
+        android:name="com.example.session2.view.DeliverySucFragment"
+        android:label="fragment_delivery_suc"
+        tools:layout="@layout/fragment_delivery_suc" >
+        <action
+            android:id="@+id/action_deliverySucFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
 </navigation>

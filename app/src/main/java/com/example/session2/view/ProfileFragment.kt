@@ -155,6 +155,5 @@ class ProfileFragment : Fragment() {
         }finally {
             inputStream?.close()
         }
-
     }
 }
