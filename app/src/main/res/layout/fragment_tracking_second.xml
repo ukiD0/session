@@ -4,21 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.TrackFragment">
-
+    tools:context=".view.TrackingSecondFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-      >
+        >
+
         <ProgressBar
             android:id="@+id/progbar"
-            android:visibility="visible"
             style="@style/customprogress"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_gravity="center"
+            android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -87,7 +87,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="24dp"
-                    android:background="@drawable/lines_ic" />
+                    android:background="@drawable/check_all" />
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="wrap_content"
@@ -99,6 +99,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="7dp"
+                        android:textColor="@color/primary_blue"
                         android:text="Courier requested" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -116,6 +117,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="7dp"
                         android:layout_marginTop="5dp"
+                        android:textColor="@color/primary_blue"
                         android:text="Package ready for delivery" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -151,6 +153,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="7dp"
                         android:layout_marginTop="5dp"
+                        android:textColor="@color/primary_blue"
                         android:text="Package delivered" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -159,8 +162,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="7dp"
                         android:layout_marginTop="5dp"
-                        android:text="July 7 2022 10:30am"
-                        android:textColor="@color/drk_gary" />
+                        android:textColor="#EC8000"
+                        android:text="July 7 2022 10:30am" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
@@ -186,7 +189,6 @@
 
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </ScrollView>

@@ -41,11 +41,7 @@ class ProfileFragment : Fragment() {
     private lateinit var stateViewModel: StateViewModel
     private lateinit var profileViewModel: ProfileViewModel
     private lateinit var bucketViewModel: BucketViewModel
-    private val startForProfileImageResult =
-        registerForActivityResult(ActivityResultContracts.StartActivityForResult())
-        { result: ActivityResult ->
-            binding.photo.setImageURI(result.data?.data)
-        }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

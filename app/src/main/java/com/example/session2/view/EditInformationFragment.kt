@@ -32,7 +32,7 @@ class EditInformationFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentEditInformationBinding.inflate(inflater,container,false)
+        binding = FragmentEditInformationBinding.inflate(inflater, container, false)
         stateViewModel = ViewModelProvider(requireActivity())[StateViewModel::class.java]
         profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
         authViewModel = ViewModelProvider(requireActivity())[AuthViewModel::class.java]
@@ -41,7 +41,7 @@ class EditInformationFragment : Fragment() {
         lifecycleScope.launch {
             result = profileViewModel.getProfileData()
         }.invokeOnCompletion {
-            if (result != null){
+            if (result != null) {
                 binding.name.setText(result?.fullname.toString())
                 binding.number.setText(result?.phone.toString())
             }
@@ -49,49 +49,35 @@ class EditInformationFragment : Fragment() {
         stateViewModel.setBottomVisible(false)
         stateViewModel.setVisible(false)
 
-//        var phone = ""
-//
-//        authViewModel.currentPhone.observe(viewLifecycleOwner){
-//            if (it != null){
-//                phone = it
-//            }
-//        }
 
         binding.pass2.editText?.doAfterTextChanged {
             if (binding.name.text.toString().length > 5
                 && binding.number.text.toString().length > 5
                 && binding.pass.editText?.text.toString() == binding.pass2.editText?.text.toString()
-                && binding.pass2.editText?.text.toString().length > 6){
+                && binding.pass2.editText?.text.toString().length > 6
+            ) {
                 binding.btnSignUp.isEnabled = true
             }
         }
 
         binding.btnSignUp.setOnClickListener {
-            var result:Profiles? = null
+            var result: Profiles? = null
             lifecycleScope.launch {
-                result = profileViewModel.setProfileData(Profiles(
-                    fullname = binding.name.text.toString(),
-                    phone = binding.number.text.toString())
+                result = profileViewModel.setProfileData(
+                    Profiles(
+                        fullname = binding.name.text.toString(),
+                        phone = binding.number.text.toString()
+                    )
                 )
             }.invokeOnCompletion {
-                if (result != null){
+                if (result != null) {
                     Toast.makeText(requireContext(), "Okey", Toast.LENGTH_LONG).show()
                 }
             }
-
-//            var modifUser: UserInfo? = null
-//            try {
-//                lifecycleScope.launch {
-//                    modifUser = authViewModel.editProfile(binding.number.text.toString())
-//                }.invokeOnCompletion {
-//                    Navigation.findNavController(binding.root).navigate(R.id.action_editInformationFragment_to_profileFragment)
-//                }
-//            }catch (e:Exception){
-//                Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
-//            }
         }
 
-        return binding.root
+
+            return binding.root
+        }
     }
 
-}

@@ -182,6 +182,24 @@
         <item name="android:textFontWeight" >500</item>
         <item name="android:fontFamily">@font/roboto_medium</item>
     </style>
+    <style name="packageinfo">
+        <item name="android:textColor">@color/primary_blue</item>
+        <item name="android:textSize">16dp</item>
+        <item name="android:textFontWeight" >500</item>
+        <item name="android:fontFamily">@font/roboto_medium</item>
+    </style>
+    <style name="blackOrder">
+        <item name="android:textColor">@color/text_asblack</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textFontWeight" >400</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+    <style name="grayOrder">
+        <item name="android:textColor">@color/drk_gary</item>
+        <item name="android:textSize">12dp</item>
+        <item name="android:textFontWeight" >400</item>
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
 
 
 </resources>

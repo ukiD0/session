@@ -92,8 +92,8 @@
         android:label="fragment_track"
         tools:layout="@layout/fragment_track" >
         <action
-            android:id="@+id/action_trackFragment_to_sendAPAckageFragment"
-            app:destination="@id/sendAPAckageFragment" />
+            android:id="@+id/action_trackFragment_to_trackingSecondFragment"
+            app:destination="@id/trackingSecondFragment" />
     </fragment>
     <fragment
         android:id="@+id/pdfViewFragment"
@@ -142,11 +142,11 @@
         android:label="fragment_send_a_p_ackage"
         tools:layout="@layout/fragment_send_a_p_ackage" >
         <action
-            android:id="@+id/action_sendAPAckageFragment_to_trackFragment"
-            app:destination="@id/trackFragment" />
-        <action
             android:id="@+id/action_sendAPAckageFragment_to_deliverySucFragment"
             app:destination="@id/deliverySucFragment" />
+        <action
+            android:id="@+id/action_sendAPAckageFragment_to_trackingSecondFragment2"
+            app:destination="@id/trackingSecondFragment" />
     </fragment>
     <fragment
         android:id="@+id/addPaymentMethFragment"
@@ -165,5 +165,17 @@
         <action
             android:id="@+id/action_deliverySucFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/trackingSecondFragment"
+        android:name="com.example.session2.view.TrackingSecondFragment"
+        android:label="fragment_tracking_second"
+        tools:layout="@layout/fragment_tracking_second" >
+        <action
+            android:id="@+id/action_trackingSecondFragment_to_sendAPAckageFragment2"
+            app:destination="@id/sendAPAckageFragment" />
+        <action
+            android:id="@+id/action_trackingSecondFragment_to_trackFragment"
+            app:destination="@id/trackFragment" />
     </fragment>
 </navigation>

@@ -50,6 +50,9 @@ class AddPaymentMethFragment : Fragment() {
         binding.rb4.setOnClickListener{
             binding.rb3.isChecked = false
         }
+        binding.proccedtpay.setOnClickListener {
+            Navigation.findNavController(binding.root).navigate(R.id.action_addPaymentMethFragment_to_walletTransactionFragment)
+        }
 
         return binding.root
     }

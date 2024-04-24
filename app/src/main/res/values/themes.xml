@@ -16,5 +16,7 @@
 <!--        <item name="android:textColorHighlight">@null</item>-->
 <!--        <item name="android:layout_span">@null</item>-->
 <!--    </style>-->
-
+    <style name="customprogress">
+        <item name="android:indeterminateDrawable">@drawable/progressbar_orange</item>
+    </style>
 </resources>

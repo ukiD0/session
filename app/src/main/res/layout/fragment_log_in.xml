@@ -19,7 +19,7 @@
             android:layout_height="100dp"
             android:layout_gravity="center"
             android:visibility="gone"
-            android:indeterminateTint="@color/yellow"/>
+            style="@style/customprogress"/>
         <androidx.appcompat.widget.LinearLayoutCompat
             android:id="@+id/mainContaienrr"
             android:layout_width="match_parent"
