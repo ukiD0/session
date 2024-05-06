@@ -5,18 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import com.example.session2.R
 import com.example.session2.databinding.FragmentAddPaymentMethBinding
 import com.example.session2.viewmodel.StateViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class AddPaymentMethFragment : Fragment() {
+class AddPaymentMethFragment : Fragment(){
     private lateinit var binding: FragmentAddPaymentMethBinding
     private lateinit var stateViewModel: StateViewModel
 

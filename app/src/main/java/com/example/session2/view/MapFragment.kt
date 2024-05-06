@@ -10,13 +10,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
 import com.example.session2.R
-import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentMapBinding
 import com.example.session2.viewmodel.StateViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -31,7 +28,6 @@ import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.overlay.Marker
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
-import kotlin.coroutines.coroutineContext
 
 
 class MapFragment : Fragment() {

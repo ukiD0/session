@@ -16,7 +16,7 @@ class ProfileViewModel:ViewModel() {
         _user.value = DbCon.supabase.auth.currentUserOrNull()
     }
 
-    suspend fun setProfileData(profileData: Profiles):Profiles?{
+    suspend fun setProfileData(profileData: Profiles): Profiles?{
         profileData.id_user = _user.value?.id
         val check = DbCon.supabase.from("profiles").select{
             filter {
@@ -41,7 +41,7 @@ class ProfileViewModel:ViewModel() {
             }.decodeSingleOrNull<Profiles>()
         }
     }
-    suspend fun getProfileData():Profiles?{
+    suspend fun getProfileData(): Profiles?{
         return DbCon.supabase.from("profiles").select{
             filter {
                 Profiles::id_user eq _user.value?.id

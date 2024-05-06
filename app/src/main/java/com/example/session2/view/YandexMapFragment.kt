@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Color
-import android.graphics.PointF
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
@@ -23,11 +22,9 @@ import com.example.session2.databinding.FragmentYandexMapBinding
 import com.example.session2.viewmodel.PointsViewModel
 import com.example.session2.viewmodel.StateViewModel
 import com.squareup.picasso.Picasso
-import com.squareup.picasso.PicassoProvider
 import com.squareup.picasso.Target
 import com.yandex.mapkit.MapKit
 import com.yandex.mapkit.MapKitFactory
-import com.yandex.mapkit.geometry.BoundingBox
 import com.yandex.mapkit.geometry.Point
 import com.yandex.mapkit.layers.ObjectEvent
 import com.yandex.mapkit.location.FilteringMode
@@ -37,16 +34,12 @@ import com.yandex.mapkit.location.LocationStatus
 import com.yandex.mapkit.map.Cluster
 import com.yandex.mapkit.map.ClusterListener
 import com.yandex.mapkit.map.ClusterTapListener
-import com.yandex.mapkit.map.ClusterizedPlacemarkCollection
 import com.yandex.mapkit.map.IconStyle
-import com.yandex.mapkit.map.RotationType
 import com.yandex.mapkit.render.internal.TextualImageProvider
 import com.yandex.mapkit.user_location.UserLocationLayer
 import com.yandex.mapkit.user_location.UserLocationObjectListener
 import com.yandex.mapkit.user_location.UserLocationView
 import com.yandex.runtime.image.ImageProvider
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
@@ -68,7 +61,6 @@ class YandexMapFragment : Fragment(), UserLocationObjectListener, ClusterTapList
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentYandexMapBinding.inflate(inflater,container,false)
-
         stateViewModel = ViewModelProvider(requireActivity())[StateViewModel::class.java]
         poinstViewModel = ViewModelProvider(requireActivity())[PointsViewModel::class.java]
 
@@ -80,12 +72,7 @@ class YandexMapFragment : Fragment(), UserLocationObjectListener, ClusterTapList
         arrback.setOnClickListener {
             Navigation.findNavController(binding.root).navigate(R.id.action_yandexMapFragment2_to_profileFragment)
         }
-        //val imageProvider = ImageProvider.fromResource(requireContext(),R.drawable.icon_png_pawww)
-//        binding.mapview.map.mapObjects
-//             .addPlacemark().apply {
-//            geometry = Point(55.823493, 37.497698)
-//            //setIcon(imageProvider)
-//        }
+
 
         lifecycleScope.launch {
             poinstViewModel.getPoint()

@@ -163,8 +163,8 @@
         android:label="fragment_delivery_suc"
         tools:layout="@layout/fragment_delivery_suc" >
         <action
-            android:id="@+id/action_deliverySucFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            android:id="@+id/action_deliverySucFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
     <fragment
         android:id="@+id/trackingSecondFragment"

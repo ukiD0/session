@@ -1,7 +1,6 @@
 package com.example.session2.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,16 +9,11 @@ import android.widget.Toast
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
-import com.example.session2.MainActivity
-import com.example.session2.R
-import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentEditInformationBinding
 import com.example.session2.model.Profiles
 import com.example.session2.viewmodel.AuthViewModel
 import com.example.session2.viewmodel.ProfileViewModel
 import com.example.session2.viewmodel.StateViewModel
-import io.github.jan.supabase.gotrue.user.UserInfo
 import kotlinx.coroutines.launch
 
 

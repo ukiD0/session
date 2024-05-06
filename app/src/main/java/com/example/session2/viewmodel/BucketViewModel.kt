@@ -1,16 +1,15 @@
 package com.example.session2.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.session2.common.DbCon
 import com.example.session2.model.Profiles
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.user.UserInfo
 import io.github.jan.supabase.postgrest.from
-import io.github.jan.supabase.storage.downloadPublicTo
 import io.github.jan.supabase.storage.storage
-import java.io.File
-import kotlin.time.Duration.Companion.hours
 
 class BucketViewModel: ViewModel() {
     private var user: UserInfo? = null

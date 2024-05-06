@@ -8,7 +8,6 @@ package com.example.session2.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import com.example.session2.common.DbCon
 import com.example.session2.model.Profiles
 import io.github.jan.supabase.gotrue.OtpType
@@ -19,10 +18,6 @@ import io.github.jan.supabase.gotrue.providers.builtin.IDToken
 import io.github.jan.supabase.gotrue.providers.builtin.OTP
 import io.github.jan.supabase.gotrue.user.UserInfo
 import io.github.jan.supabase.postgrest.from
-import kotlinx.serialization.json.JsonElement
-import kotlinx.serialization.json.JsonObjectBuilder
-import kotlinx.serialization.json.buildJsonObject
-import kotlinx.serialization.json.put
 
 
 class AuthViewModel() : ViewModel()  {

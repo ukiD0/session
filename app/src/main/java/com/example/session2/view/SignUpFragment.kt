@@ -1,12 +1,6 @@
 package com.example.session2.view
 
-import android.content.Intent
-import android.graphics.pdf.PdfRenderer
-import android.net.Uri
 import android.os.Bundle
-import android.telephony.PhoneNumberFormattingTextWatcher
-import android.text.style.URLSpan
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,14 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.session2.R
-import com.example.session2.common.DbCon
 import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentSignUpBinding
 import com.example.session2.model.Profiles
 import com.example.session2.viewmodel.AuthViewModel
 import com.example.session2.viewmodel.ProfileViewModel
 import com.example.session2.viewmodel.StateViewModel
-import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.user.UserInfo
 import kotlinx.coroutines.launch
 
@@ -94,8 +86,10 @@ class SignUpFragment : Fragment() {
                             if (res != null) {
                                 profileViewModel = ViewModelProvider(requireActivity())[ProfileViewModel::class.java]
                                 lifecycleScope.launch {
-                                    profileViewModel.setProfileData(Profiles(fullname = binding.name.text.toString(),
-                                        phone = binding.number.text.toString()))
+                                    profileViewModel.setProfileData(
+                                        Profiles(fullname = binding.name.text.toString(),
+                                        phone = binding.number.text.toString())
+                                    )
                                 }.invokeOnCompletion {
                                     Navigation.findNavController(binding.root)
                                         .navigate(R.id.action_signUpFragment_to_homeFragment)

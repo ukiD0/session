@@ -14,7 +14,7 @@
       >
         <ProgressBar
             android:id="@+id/progbar"
-            android:visibility="visible"
+            android:visibility="invisible"
             style="@style/customprogress"
             android:layout_width="120dp"
             android:layout_height="120dp"
@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:paddingBottom="40dp"
-            android:visibility="invisible"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -82,12 +82,43 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:orientation="horizontal">
-
-                <androidx.appcompat.widget.AppCompatImageView
+                <FrameLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="24dp"
-                    android:background="@drawable/lines_ic" />
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+
+                        android:orientation="vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <CheckBox
+                            android:id="@+id/checkStateOne"
+                            android:layout_width="wrap_content"
+                            android:button="@null"
+                            android:background="@drawable/test_check"
+                            android:layout_height="wrap_content"/>
+                        <CheckBox
+                            android:id="@+id/checkStateTwo"
+                            android:layout_width="wrap_content"
+                            android:button="@null"
+                            android:background="@drawable/test_check"
+                            android:layout_height="wrap_content"/>
+                        <CheckBox
+                            android:id="@+id/checkStateThree"
+                            android:layout_width="wrap_content"
+                            android:button="@null"
+                            android:background="@drawable/test_check"
+                            android:layout_height="wrap_content"/>
+                        <CheckBox
+                            android:id="@+id/checkStateFour"
+                            android:layout_width="wrap_content"
+                            android:button="@null"
+                            android:background="@drawable/test_check"
+                            android:layout_height="wrap_content"/>
+                    </LinearLayout>
+
+                </FrameLayout>
+
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="wrap_content"

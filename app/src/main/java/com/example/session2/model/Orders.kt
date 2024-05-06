@@ -23,5 +23,7 @@ data class Orders(
     var instant_delivery: String? = null,
     var tax_and_service_charges: String? = null,
     var sum_price: String? = null,
+    var lat: String? = null,
+    var long: String? = null
 
 )

@@ -1,17 +1,13 @@
 package com.example.session2.view
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
-import com.example.session2.MainActivity
 import com.example.session2.R
 import com.example.session2.databinding.FragmentPdfViewBinding
 import com.example.session2.viewmodel.StateViewModel

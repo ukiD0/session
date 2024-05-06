@@ -3,31 +3,26 @@
  * Created at 09/04/24
  *
  * */
-package com.example.session2
+package com.example.session2.view
 
-import android.Manifest
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
-import androidx.core.app.ActivityCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.session2.R
 import com.example.session2.common.APIkey
-import com.example.session2.view.YandexMapFragment
-import com.example.session2.viewmodel.ProfileViewModel
 import com.example.session2.viewmodel.StateViewModel
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yandex.mapkit.MapKitFactory
 import com.yandex.mapkit.layers.ObjectEvent
 import com.yandex.mapkit.user_location.UserLocationObjectListener
 import com.yandex.mapkit.user_location.UserLocationView
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), UserLocationObjectListener {
     private lateinit var stateViewModel: StateViewModel

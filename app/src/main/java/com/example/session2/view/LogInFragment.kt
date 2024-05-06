@@ -10,21 +10,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import com.example.session2.R
-import com.example.session2.common.DbCon
 import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentLogInBinding
 import com.example.session2.viewmodel.AuthViewModel
 import com.example.session2.viewmodel.StateViewModel
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import io.github.jan.supabase.gotrue.SessionStatus
-import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.gotrue.user.UserInfo
 import kotlinx.coroutines.launch
 

@@ -1,4 +1,4 @@
-package com.example.session2.repository
+package com.example.session2.domain
 
 import io.github.jan.supabase.gotrue.user.UserInfo
 

@@ -55,6 +55,17 @@ dependencies {
     implementation("com.google.android.gms:play-services-location:21.1.0")
     implementation ("com.yandex.android:maps.mobile:4.5.1-lite")
 
+    implementation ("com.yandex.android:maps.mobile:4.5.1-full")
+    androidTestImplementation ("com.android.support.test:rules:1.0.2")
+    debugImplementation("androidx.fragment:fragment-testing:1.7.0")
+    androidTestImplementation("androidx.test:runner:1.5.2")
+    androidTestImplementation("androidx.test:rules:1.5.0")
+    androidTestImplementation("androidx.navigation:navigation-testing:2.7.7")
+
+
+
+
+
 
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

@@ -1,4 +1,4 @@
-package com.example.session2.model
+package com.example.session2.viewmodel
 
 import kotlinx.serialization.Serializable
 

@@ -14,7 +14,7 @@ import com.example.session2.R
 import com.example.session2.common.Helper
 import com.example.session2.databinding.FragmentSendAPAckageBinding
 import com.example.session2.model.Orders
-import com.example.session2.model.destinations_details
+import com.example.session2.viewmodel.destinations_details
 import com.example.session2.viewmodel.DestinationViewModel
 import com.example.session2.viewmodel.OrderViewModel
 import com.example.session2.viewmodel.StateViewModel
@@ -42,77 +42,46 @@ class SendAPAckageFragment : Fragment() {
 
         val backpls = requireActivity().findViewById<ImageView>(R.id.arrow_backkkkk)
         backpls.setOnClickListener {
-            Navigation.findNavController(binding.root).navigate(R.id.action_sendAPAckageFragment_to_trackingSecondFragment2)
+            Navigation.findNavController(binding.root).navigate(R.id.action_sendAPAckageFragment_to_deliverySucFragment)
         }
 
         var orig_adress: destinations_details? = null
-        var or_phone: destinations_details? = null
-//        lifecycleScope.launch {
-//            try {
-//                orig_adress = destinationViewModel.getDestinDetail()
-//            }catch (e:Exception){
-//                Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
-//            }
-//        }.invokeOnCompletion {
-//            if (orig_adress !=null){
-//               binding.origAdresssss.text = orig_adress.toString()
-//            }
-//        }
-        var cur_city: Orders? = null
-        var cur_address: Orders? = null
-        var cur_phone: Orders? = null
-        var pack_it: Orders? = null
-        var weight: Orders? = null
-        var worth: Orders? = null
-        var track_number: Orders? = null
-        var charges: Orders? = null
-        var instant: Orders? = null
-        var tax: Orders? = null
-        var total: Orders?  =null
+        var order: Orders? = null
 
         lifecycleScope.launch {
             try {
-                cur_address = orderViewModel.getOrder()
-                cur_city = orderViewModel.getOrder()
-                pack_it = orderViewModel.getOrder()
-                weight = orderViewModel.getOrder()
-                worth = orderViewModel.getOrder()
-                track_number = orderViewModel.getOrder()
-                cur_phone = orderViewModel.getOrder()
-                charges = orderViewModel.getOrder()
-                instant = orderViewModel.getOrder()
-                tax = orderViewModel.getOrder()
-                total = orderViewModel.getOrder()
+                order = orderViewModel.getOrder()
             }catch (e:Exception){
                 Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
             }
         }.invokeOnCompletion {
-            if (cur_address != null
-                && cur_city != null
-                &&pack_it != null
-                && weight != null
-                && worth != null
-                && track_number != null
-                && cur_phone != null
-                && charges != null
-                && instant != null
-                && tax != null
-                && total != null){
-                binding.city.text = cur_city?.country.toString() + " " + cur_address?.address.toString()
-                binding.packitemss.text = pack_it?.package_items.toString()
-                binding.weighkg.text = weight?.weight_items.toString() + "kg"
-                binding.Nworth.text = "N" + worth?.worth_items.toString()
-                binding.Rtrack.text = "R-" + track_number?.id.toString()
-                binding.telphone.text = cur_phone?.phone.toString()
-                binding.Ncharrges.text = "N" + charges?.delivery_charges.toString()
-                binding.Ntax.text = "N" + tax?.tax_and_service_charges.toString()
-                binding.Ninstant.text = "N" + instant?.instant_delivery.toString()
-                binding.total.text = "N" + total?.sum_price.toString()
+            if (order != null){
+                lifecycleScope.launch {
+                    try {
+                        orig_adress = destinationViewModel.getDestinDetail(order!!.id)
+                    }catch (e:Exception){
+                        Helper.alert(requireContext(),e.cause.toString(),e.message.toString())
+                    }
+                }.invokeOnCompletion {
+                    if (orig_adress !=null){
+                        binding.origAdresssss.text = if (orig_adress?.country != null && orig_adress?.address != null) orig_adress?.country.toString() + " " + orig_adress?.address.toString() else  binding.origAdresssss.text
+                        binding.origPhone.text = if (orig_adress?.phone != null) orig_adress?.phone.toString() else  binding.origPhone.text
+                    }
+                }
+                binding.city.text = if (order?.country != null) order?.country.toString() + " " + order?.address.toString() else  binding.city.text
+                binding.packitemss.text = if (order?.package_items != null) order?.package_items else binding.packitemss.text
+                binding.weighkg.text = if (order?.weight_items != null) order?.weight_items.toString() + "kg" else binding.weighkg.text
+                binding.Nworth.text = if (order?.worth_items != null) "N" + order?.worth_items else binding.Nworth.text
+                binding.Rtrack.text = if (order?.id != null) "R-" + order?.id else binding.Rtrack.text
+                binding.telphone.text = if (order?.phone != null) order?.phone else binding.telphone.text
+                binding.Ncharrges.text = if (order?.delivery_charges != null) "N" + order?.delivery_charges else binding.Ncharrges.text
+                binding.Ntax.text = if (order?.tax_and_service_charges != null)  "N" + order?.tax_and_service_charges else binding.Ntax.text
+                binding.Ninstant.text = if (order?.instant_delivery != null) "N" + order?.instant_delivery else binding.Ninstant.text
+                binding.total.text = if (order?.sum_price != null) "N" + order?.sum_price else binding.total.text
             }
             binding.progBar.isVisible = false
             binding.maincontainer.isVisible = true
         }
-
 
         binding.suc.setOnClickListener{
             Navigation.findNavController(binding.root).navigate(R.id.action_sendAPAckageFragment_to_deliverySucFragment)

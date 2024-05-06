@@ -15,12 +15,18 @@ import com.example.session2.databinding.FragmentTrackingSecondBinding
 import com.example.session2.model.Orders
 import com.example.session2.viewmodel.OrderViewModel
 import com.example.session2.viewmodel.StateViewModel
+import com.yandex.mapkit.MapKitFactory
 import kotlinx.coroutines.launch
 
 class TrackingSecondFragment : Fragment() {
    private lateinit var binding: FragmentTrackingSecondBinding
    private lateinit var stateViewModel: StateViewModel
    private lateinit var orderViewModel: OrderViewModel
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        MapKitFactory.initialize(requireContext())
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,6 +37,8 @@ class TrackingSecondFragment : Fragment() {
 
         stateViewModel.setVisible(false)
         stateViewModel.setBottomVisible(true)
+
+
 
 
         var track: Orders? = null
@@ -56,6 +64,18 @@ class TrackingSecondFragment : Fragment() {
 
 
         return binding.root
+    }
+
+    override fun onStart() {
+        super.onStart()
+        MapKitFactory.getInstance().onStart()
+        binding.mapview.onStart()
+    }
+
+    override fun onStop() {
+        binding.mapview.onStart()
+        MapKitFactory.getInstance().onStop()
+        super.onStop()
     }
 
 }
